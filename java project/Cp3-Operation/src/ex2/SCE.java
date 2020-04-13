@@ -46,8 +46,8 @@ public class SCE {
 			
 			
 			//문제2
-			int a = (((25*5) + (36-4)) - 72)/5;
-			System.out.println(a);
+			int a1 = (((25*5) + (36-4)) - 72)/5;
+			System.out.println(a1);
 	}
 
 }
