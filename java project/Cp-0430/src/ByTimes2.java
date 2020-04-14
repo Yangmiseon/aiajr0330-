@@ -12,7 +12,6 @@ public class ByTimes2 {
 			System.out.println(i+"단");
 			System.out.println("-------------------------------------");
 			
-			//곱하기 표현
 			int j = 1;
 			while(j<10) {
 				System.out.println(i+" X " +j+"= " +i*j);

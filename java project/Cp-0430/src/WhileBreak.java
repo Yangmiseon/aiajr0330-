@@ -10,7 +10,7 @@ public class WhileBreak {
 			if(sum>100) {
 				break;
 			}
-			System.out.println(i);
+			System.out.println(0);
 			i++;
 			sum += i;
 			
