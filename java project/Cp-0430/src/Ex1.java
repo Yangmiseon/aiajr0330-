@@ -29,6 +29,7 @@ public class Ex1 {
 		public static void main1(String[] args) {	
 		
 		
+			
 			int i =0;
 			while (i%2==0 && i%7==0) {
 				if(i<=100) {
