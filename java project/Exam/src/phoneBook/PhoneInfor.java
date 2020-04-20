@@ -1,6 +1,5 @@
 package phoneBook;
 
-import java.util.Scanner;
 
 public class PhoneInfor {
 
@@ -10,11 +9,16 @@ public class PhoneInfor {
 		String phoneNumber;
 		String birthday;
 		
-		void phoneSave(String myName, String number, String day) {
-			name = myName;
-			phoneNumber = number;
-			birthday = day;
-		
+		//이름, 전화번호 생일 모두 입력 생성자
+		void PhoneInfor(String myName, String number, String day) {
+			this.name = myName;
+			this.phoneNumber = number;
+			this.birthday = day;
+		}
+		//이름, 전화번호 입력 생성자
+		void PhoneInfor(String myName, String number) {
+			this.name = myName;
+			this.phoneNumber = number;
 		}
 		
 		public String toString(String name1, String phoneNumber1) {
@@ -31,26 +35,19 @@ public class PhoneInfor {
 		
 		
 		public static void main(String[] args) {
-			
+	
 			PhoneInfor p1 = new PhoneInfor();
-			
-			Scanner keyboard=new Scanner(System.in);
-			
-			
-			System.out.print("당신의 이름을 입력하세요 ");
-			String name1=keyboard.nextLine();
-			
-			System.out.println("안녕하세요 "+name1+'님');
-			System.out.print("전화번호는 무엇입니까? ");
-			
-			
-			String phoneNumber1=keyboard.nextLine();
-			System.out.println("생일을 입력해주세요");
-			
-		
-			System.out.println(p1.toString(name1,phoneNumber1));
-			//System.out.println(p1.toString1(birthday1);
+			java.util.Scanner s = new java.util.Scanner(System.in);
+		System.out.println("숫자를 입력하세요\n");
+			p1.name = ' ';
+			p1.phoneNumber = ' ';
+			p1.birthday = ' ';
+			PhoneInfor p2 = new PhoneInfor();
+			p2.name = ' ';
+			p2.phoneNumber = ' ';
 			
 	}
 
+		
+		
 }
