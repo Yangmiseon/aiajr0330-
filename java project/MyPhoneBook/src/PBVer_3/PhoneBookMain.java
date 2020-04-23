@@ -10,12 +10,19 @@ public class PhoneBookMain {
 		while (true) {
 			
 			info = manager.createInfo();
-			info.showInfo();
+			manager.addInfo(info);
+			manager.showAll();
+			
+			manager.searchInfo();
+			manager.deleteInfo();
+			
 		}
 				
 
+			
 	}
-	
+	}
 
-}
+
+
 

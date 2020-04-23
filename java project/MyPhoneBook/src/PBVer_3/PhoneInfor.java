@@ -25,5 +25,10 @@ public class PhoneInfor {
 		System.out.println("---------------------------------");
 		}
 
+	public boolean checkName(String name) {
+		
+		return this.name.equals(name);
+	}
+
 }
 

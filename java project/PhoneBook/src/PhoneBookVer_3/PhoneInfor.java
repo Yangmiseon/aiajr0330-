@@ -45,6 +45,7 @@ public class PhoneInfor {
 //			if(this.birthday == null) {
 //				System.out.println("생일 : 입력값이 없습니다");
 //			}else {
+			
 //			System.out.println("생       일 : "+this.birthday);
 //			
 //			}1번일때는 이렇게 처리
