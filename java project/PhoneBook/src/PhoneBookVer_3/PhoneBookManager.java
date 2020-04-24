@@ -2,6 +2,7 @@ package PhoneBookVer_3;
 
 import java.util.Scanner;
 
+
 /*배열을 이용해서 프로그램 사용자가 입력하는 정보가 최대 100개까지 유지되도록 프로그램을 변경. 
 아래기능 삽입
 저장 : 이름, 전화번호, 생년월일 정보를 대상으로 하는 저장
@@ -54,6 +55,8 @@ public class PhoneBookManager {
 		cnt++;
 	}
 	
+	
+	
 	//사용자의 입력데이터로 PhoneInfor 객체를 생성		
 		
 		PhoneInfor createInstanse() {
@@ -77,8 +80,35 @@ public class PhoneBookManager {
 		}else {
 			info = new PhoneInfor(name, phoneNumber, birthday);
 		}
-		return info;
+		//////////////////////////////////////////////////////////////
+		
+		int selectNum = 0;
+		if(selectNum == 1) {
+			//1일때 정보 받기 - 직업
+			System.out.println("직업 입력하기");
+			String company =  sc.nextLine();
+			
+			//인스턴스 생성
+			info = new PhoneCompaanyInfor(name, phoneNumber, birthday, company);
+			
+		}else {
+			//2일때 정보 받기
+			System.out.println("회사 입력하기");
+			String major = sc.nextLine(); 
+			System.out.println("학년(숫자) 입력하기");
+			String year = sc.nextLine();
+		
+			//유니브 프렌드 정보받기
+			info = new PhoneUnivInfor(name, phoneNumber, birthday, major, year);
 		}
+		
+		//addFriendInfo호출
+		addInfo(info);
+		return info;
+		
+	}
+	
+		
 		
 		
 

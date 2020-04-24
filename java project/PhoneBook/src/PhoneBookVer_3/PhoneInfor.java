@@ -41,7 +41,7 @@ public class PhoneInfor {
 			System.out.println("이      름 : "+this.name);
 			System.out.println("전화번호 : "+this.phoneNumber);
 			System.out.println("생       일 : "+this.birthday);//2번일때
-			System.out.println("================= ");
+			
 //			if(this.birthday == null) {
 //				System.out.println("생일 : 입력값이 없습니다");
 //			}else {

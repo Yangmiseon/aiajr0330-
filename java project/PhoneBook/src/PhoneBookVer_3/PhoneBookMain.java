@@ -24,26 +24,26 @@ public class PhoneBookMain {
 		sc.nextLine();
 		
 		switch(selectNum) {
-		case 1://사용자의 입력 데이터를 인스턴스 생성
+		case 1:  case 2://사용자의 입력 데이터를 인스턴스 생성
 //			PhoneInfor info = manager.createInstanse();
 			//정보를 배열에 저장
 //			manager.addInfo(info);
 			manager.addInfo();
 			break;
 			
-		case 2://이름으로 검색
+		case 3://이름으로 검색
 			manager.searchInfo();
 			break;
 			
-		case 3://이름으로 검색 후 삭제
+		case 4://이름으로 검색 후 삭제
 			manager.deleteInfo();
 			break;
 			
-		case 4://전체 리스트 출력 >> 저장된 개수. 전체개수아님
+		case 5://전체 리스트 출력 >> 저장된 개수. 전체개수아님
 			manager.showAllData();
 			break;
 			
-		case 5:
+		case 6:
 			System.exit(0);
 				return;
 		
