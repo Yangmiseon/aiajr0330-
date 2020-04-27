@@ -10,9 +10,9 @@ public class PhoneCompaanyInfor extends PhoneInfor { //회사명
 	}
 
 	@Override
-	void showInfo() {
+	void showAllInfo() {
 		
-		super.showInfo();
+		super.showAllInfo();
 		System.out.println("회사명 : "+company);
 	}
 

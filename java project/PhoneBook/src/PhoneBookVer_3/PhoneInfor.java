@@ -51,6 +51,10 @@ public class PhoneInfor {
 //			}1번일때는 이렇게 처리
 		}
 		
+		void showAllInfo() {
+			 showInfo();
+		}
+		
 		//변수의 name을 직접 참조할 수 없으니 기능을 만들어줌
 		//name속성 값과 전달받은 문자열을 비교해서 결과 반환
 		boolean checkName(String name) {

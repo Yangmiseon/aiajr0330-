@@ -47,13 +47,13 @@ public class PhoneBookManager {
 		cnt++;
 	}
 	
-	void addInfo() {
-		
-		//[]에 cnt++ 을 넣어주면 한줄줄일수있음
-		pBooks[cnt] = createInstanse();
-		
-		cnt++;
-	}
+//	void addInfo() {
+//		
+//		//[]에 cnt++ 을 넣어주면 한줄줄일수있음
+//		pBooks[cnt] = createInstanse();
+//		
+//		cnt++;
+//	}
 	
 	
 	
@@ -61,11 +61,13 @@ public class PhoneBookManager {
 		
 		PhoneInfor createInstanse() {
 		PhoneInfor info = null;
-		
+	
 	
 		System.out.println("친구의 정보를 저장하기 위한 데이터 입력");
-		System.out.println("이름을 입력해주세요. >> ");
-		
+		System.out.println("1.회사  2.대학교 ");
+			int selectNum = Integer.parseInt(sc.nextLine());
+			
+		System.out.println("이름을 입력해 주세요. >> ");
 		String name = sc.nextLine();
 		
 		System.out.println("전화번호를 입력해 주세요. >> ");
@@ -79,10 +81,8 @@ public class PhoneBookManager {
 			info = new PhoneInfor(name, phoneNumber);
 		}else {
 			info = new PhoneInfor(name, phoneNumber, birthday);
-		}
-		//////////////////////////////////////////////////////////////
+		}		
 		
-		int selectNum = 0;
 		if(selectNum == 1) {
 			//1일때 정보 받기 - 직업
 			System.out.println("직업 입력하기");
@@ -93,7 +93,7 @@ public class PhoneBookManager {
 			
 		}else {
 			//2일때 정보 받기
-			System.out.println("회사 입력하기");
+			System.out.println("학교 입력하기");
 			String major = sc.nextLine(); 
 			System.out.println("학년(숫자) 입력하기");
 			String year = sc.nextLine();
@@ -106,6 +106,7 @@ public class PhoneBookManager {
 		addInfo(info);
 		return info;
 		
+		
 	}
 	
 		
@@ -117,7 +118,8 @@ public class PhoneBookManager {
 					
 					//전체 데이터 - > 입력된 데이터의 개수 cnt
 					for(int i=0; i<cnt; i++) {
-						pBooks[i].showInfo();
+						System.out.println("****전체정보***");
+						pBooks[i].showAllInfo();
 						System.out.println("********************");
 					}
 					
@@ -153,7 +155,7 @@ public class PhoneBookManager {
 					if(searchIndex<0) {//검색결과가 없을 경우
 						System.out.println("찾으시는 이름의 데이터가 존재하지 않습니다.");
 					}else {
-						pBooks[searchIndex].showInfo();
+						pBooks[searchIndex].showAllInfo();
 					}
 				}
 				
