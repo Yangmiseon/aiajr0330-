@@ -1,4 +1,4 @@
-package Ver5;
+package EX;
 
 import java.util.Scanner;
 
