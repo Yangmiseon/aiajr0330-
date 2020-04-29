@@ -1,5 +1,6 @@
 package EX;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //PhoneInfo타입의 배열로 친구들의 정보를 저장, 수정, 삭제, 검색, 출력 기능을 해주는 클래스
@@ -48,24 +49,46 @@ public class PhoneBookManager {
 	void createInfo () {
 	
 
-	while(true) {
-		System.out.println(""+MenuNum.INSERT_UNIV+". 대학  "
-				+ ""+MenuNum.INSERT_COMPANY+". 회사  "+MenuNum.PRINT_CAFE+". 동호회");
-		System.out.println("번호를 선택해 주세요.");
+	
+		
 		int select = 0;
-		try {
-		 select = Integer.parseInt(kb.nextLine());
-		 if(!(select>0 && select<7)) {
-				System.out.println("정상적인 메뉴 선택이 아닙니다.\n 메뉴를 다시 선택해 주세요.");
-			continue;
+		
+		while(true) {
+			System.out.println(""+MenuNum.INSERT_UNIV+". 대학  "
+					+ ""+MenuNum.INSERT_COMPANY+". 회사  "+MenuNum.PRINT_CAFE+". 동호회");
+			System.out.println("번호를 선택해 주세요.");
+			
+			try {
+			select = kb.nextInt();
+			
+			if(!(select>0 && select<4)) {
+				BadNumberException e = new BadNumberException("메뉴 범위를 벗어나는 범위입니다.\n 확인후 입력해 주세요.");
+				//System.out.println("정상적인 메뉴 선택이 아닙니다.\n 메뉴를 다시 선택해 주세요.");
+				throw e;//강제예외발생
+				
+			}break;
+			}catch (InputMismatchException e){
+				System.out.println("정상적인 입력이 아닙니다. 다시 선택해 주세요.");
+				manager.kb.nextLine();//버퍼방지
+				continue;
+			}catch (BadNumberException e){//강제예외발생시 처리해주는거
+				System.out.println("정상적인 입력이 아닙니다. 다시 선택해 주세요.");
+				manager.kb.nextLine();//버퍼방지
+				
+				continue;
+			}catch (Exception e){
+				System.out.println("정상적인 입력이 아닙니다. 다시 선택해 주세요.");
+				manager.kb.nextLine();//버퍼방지
+				
+				continue;
+			}finally {//이렇게해주면 다 비워줌
+			manager.kb.nextLine();
 			}
-		}catch (NumberFormatException e){
-			System.out.println("잘못입력하셨습니다. 다시 선택해 주세요.");
-			continue;
-		}catch (RuntimeException e){
-			System.out.println("잘못입력하셨습니다. 다시 선택해 주세요.");
-			continue;
+		 
+		
+		 
 		}
+		 
 		 
 //		int select = kb.nextInt();
 //		kb.nextLine();
@@ -73,26 +96,38 @@ public class PhoneBookManager {
 //		while(true) {//이위치에 있으면 처음메뉴가 안나옴
 			
 	
-		
-			
+		PhoneInfo info = null;
+		String name = null, phoneNumber=null, addr=null, email=null;
 		//int select = Integer.parseInt(kb.nextLine());
-		
+		while(true) {
 		//2.2.1기본 정보 수집 : 이름, 전번, 주소, 이메일
 		System.out.println("이름을 입력해 주세요");
-		String name = kb.nextLine();
+		name = kb.nextLine();
 		
 		System.out.println("전화번호를 입력해 주세요");
-		String phoneNumber = kb.nextLine();
+		phoneNumber = kb.nextLine();
 		
 		System.out.println("주소를 입력해 주세요");
-		String addr = kb.nextLine();
+		addr = kb.nextLine();
 		
 		System.out.println("이메일을 입력해 주세요");
-		String email = kb.nextLine();
+		email = kb.nextLine();
 		
+		try {
+		//예외
+		//trim()공백처리해주는 메서드
+		if(name.trim().isEmpty()||phoneNumber.trim().isEmpty()||addr.trim().isEmpty()||email.trim().isEmpty()) {
+			StringEmptyException e = new StringEmptyException();
+			throw e;
+		}
+		}catch (StringEmptyException e) {
+			System.out.println("기본정보는 공백없이 모두 입력해주세요.");
+			System.out.println("다시 입력해 주세요/n");
+			continue;
+		}
 		
-		PhoneInfo info = null;
-		
+		break;
+		}
 		switch (select) {
 			
 		case MenuNum.INSERT_UNIV://2.2.3 대학 클래스로 인스턴스 생성
@@ -100,6 +135,9 @@ public class PhoneBookManager {
 			String major = kb.nextLine();
 			System.out.println("학년을 입력해 주세요");
 			String grade = kb.nextLine();
+			
+		
+			
 			info = new PhoneUnivInfor(name, phoneNumber, addr, email, major, grade);
 			break;
 			
@@ -110,6 +148,7 @@ public class PhoneBookManager {
 			String dept = kb.nextLine();
 			System.out.println("직무(직급) 입력해 주세요");
 			String jop = kb.nextLine();
+			
 			info = new PhoneCampanyInfo(name, phoneNumber, addr, email, company, dept, jop);
 			break;
 			
@@ -118,17 +157,21 @@ public class PhoneBookManager {
 			String cafeName = kb.nextLine();
 			System.out.println("닉네임을 입력해 주세요");
 			String nickName = kb.nextLine();
+			
+			//예외처리할땐 인스턴스 생성전인 이자리에 해준다.
+			
 			info = new PhoneCafeInfo(name, phoneNumber, addr, email, cafeName, nickName);
 			break;
 		
 //			System.out.println("정상적인 메뉴 선택이 아닙니다.\n 메뉴를 다시 선택해 주세요.");
 //			return; 정보 다받아놓고 다시 입력하라고하는 것보다 앞에서 먼저 걸러주는 흐름이 좋음.
 		}	
+		
+		
 		//2.3 생성된 인스턴스를 배열에 저장
 		addInfo(info);
-	break;	
-	}
-	}
+}
+		
 	
 	
 	//3.배열에 정보 전체 출력
