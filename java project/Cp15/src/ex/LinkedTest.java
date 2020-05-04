@@ -1,9 +1,5 @@
 package ex;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 public class LinkedTest {
 
@@ -19,7 +15,7 @@ public class LinkedTest {
 		Data d3 = new Data(str3, null);
 		
 		//ㅇ2삭제하고싶을때
-		d1.setNextValue(str3);
+		//d1.setNextValue(str3);
 		
 		//d4끼어들고싶을때
 		Data d4 = new Data(str4, str2);
@@ -37,14 +33,14 @@ class Data{
 	
 	Data(Object obj, Object nextObj){
 		this.value = obj;
-		this.nextValue = nextValue;
+		this.nextValue = nextObj;
 	}
 	
 	Object getValue() {
 		return value;
 	}
 	
-	void setNextValue(Object nextValue) {
-		this.nextValue = nextValue;
+	void setNextValue(Object nextvalue) {
+		this.nextValue = nextvalue;
 	}
 }

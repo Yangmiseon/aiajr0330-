@@ -9,15 +9,24 @@ public class PInfoMain {
 		
 		while(true) {
 		info = manager.create();
-		manager.addInfo(info);
-		manager.addInfo();
 		manager.showAll();
-		info.show();
+		
+		
+		
+		
+		for(int i =0; i<manager.cnt; i++) {
+			manager.pBooks[i].show();
+			info.show();
+			
+		}
+		
+		
 		
 		
 		}
-
+		
+			
+			}
 	}
 		
 
-}

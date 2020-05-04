@@ -17,22 +17,16 @@ public class PInfoManager {
 		pBooks[cnt] = create();
 		cnt++;
 	}
+//	
+//	void addInfo() {
+//		
+//		//[]에 cnt++ 을 넣어주면 한줄줄일수있음
+//		pBooks[cnt] = create();
+//		
+//		cnt++;
+//	}
+//	
 	
-	void addInfo() {
-		
-		//[]에 cnt++ 을 넣어주면 한줄줄일수있음
-		pBooks[cnt] = create();
-		
-		cnt++;
-	}
-	
-	void showAll() {
-		
-		for(int i = 0; i<cnt; i++) {
-			pBooks[i].show();
-			System.out.println("구분");
-		}
-	}
 	
 	
 	PInfo create() {
@@ -55,6 +49,14 @@ public class PInfoManager {
 				
 		info = new PInfo(name, pNum, add, birthday);
 		return info;
+	}
+	
+	void showAll() {
+		
+		for(int i = 0; i<cnt; i++) {
+			pBooks[i].show();
+			System.out.println("구분");
+		}
 	}
 
 }
