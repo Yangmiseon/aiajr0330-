@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="java project/Cp-0430/src"/>
+	<classpathentry kind="src" path="java project/Cp10/src"/>
+	<classpathentry kind="src" path="java project/Cp12/src"/>
+	<classpathentry kind="src" path="java project/Cp13/src"/>
+	<classpathentry kind="src" path="java project/Cp14/src"/>
+	<classpathentry kind="src" path="java project/Cp15/src"/>
+	<classpathentry kind="src" path="java project/Cp16/src"/>
+	<classpathentry kind="src" path="java project/Cp18"/>
+	<classpathentry kind="src" path="java project/Cp3-Operation/src"/>
+	<classpathentry kind="src" path="java project/Exam/src"/>
+	<classpathentry kind="src" path="java project/extextrpg/src"/>
+	<classpathentry kind="src" path="java project/JJJ/src"/>
+	<classpathentry kind="src" path="java project/MyPhoneBook/src"/>
+	<classpathentry kind="src" path="java project/Op0421/src"/>
+	<classpathentry kind="src" path="java project/PhoneBook/src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
