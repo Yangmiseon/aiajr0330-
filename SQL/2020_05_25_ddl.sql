@@ -41,7 +41,7 @@ select * from tab;
 select * from emp_01;
 desc emp_01;
 
---테이블의 복사 : 서브 쿼리 이용 >> 스키마 복사, 행 복사, 제약조건의 복사는 되지 않는다.
+--테이블의 복사 : 서브 쿼리 이용 >> 스키마 복사, 행 복사, 단, 제약조건의 복사는 되지 않는다.
 --백업용으로 사용하기도 함.
 create table emp_02
 as
@@ -60,18 +60,18 @@ desc emp03;
 
 --emp 테이블의 10번 부서의 데이터만 복사해서 새로운 테이블
 --emp05테이블을 생성하자
-CREATE TABLE EMP05 
+CREATE TABLE EMP04 
 AS 
 SELECT * FROM EMP 
 WHERE DEPTNO=10; 
-select * from emp05;
+select * from emp04;
 
 --emp 테이블의 스키마 구조만 복사해서 새로운 테이블 emp04생성
---모든행에 대해 false가 나오게 한다. 데이터는 가져오지 않고 구조만 가져오게 된다.
-CREATE TABLE EMP04 
+--반드시 모든행에 대해 false가 나오게 한다. << 데이터는 가져오지 않고 구조만 가져오게 된다.
+CREATE TABLE EMP05 
 AS 
 SELECT * FROM EMP WHERE 1<0; 
-select * from emp04;
+select * from emp05;
 
 --테이블에 컬럼 추가
 --alter table 테이블 이름 add (컬럼정의)
@@ -81,7 +81,7 @@ desc emp_01;
 alter table emp_01 add(job VARCHAR2(10));
 
 
---컬럼의 변경
+--컬럼의 변경(수정)
 --alter table 테이블 이름 modify(컬럼정의)
 --직급(job) 칼럼을 최대 30글자까지 저장할 수 있게 변경해 보도록 하자
 --MODIFY가 낫널이면  영향이 없지만 기존의 데이터들은 널이들어감. 외래키는 변경이 되지 ㅇ낳음.
@@ -96,7 +96,7 @@ alter table emp_01 MODIFY(job VARCHAR2(30) not null);
 alter table emp_01 drop column sal;
 desc emp_01;
 
---테이블 객체 삭제
+--테이블 객체 삭제<<원래 남아있던 데이터들 모두 삭제
 --drop table 테이블이름;
 DROP TABLE emp_01;
 
@@ -117,8 +117,26 @@ select * from tab;
 desc dept;
 insert into dept values(10,'test', 'SEOUL');
 
+
+
+
+
+
+---------------------------------------------------------------------------
+--제약조건
+---------------------------------------------------------------------------
 --not null 제약 : 컬럼의 값에 null 값을 허용하지 않는다.
 --컬럼 레벨에서만 정의가 가능
+ create table emp01 (
+     empno number(4) not null
+ )
+
+ create table emp01 (
+    empno number(4) ,
+    primary key(empno)
+);
+--not null 제약 : 컬럼의 값에 null 값을 허용하지 않는다.
+-- 컬럼 레벨에서만 정의가 가능
 
 --사원 테이블(EMP02)을 
 --사원번호, 사원명, 직급, 부서번호 4개의 칼럼으로 구성하되 
@@ -140,7 +158,7 @@ insert into emp02 VALUES (1111, 'SON','MANAGER', 10);
 
 select * from emp02;
 
---UNIQUE
+--UNIQUE:유일성, 중복허용안함
 drop table emp03;
 
 create table emp03(
@@ -167,7 +185,7 @@ create table emp03(
 );
 
 --사원번호, 사원명, 
-직급, 부서번호 4개의 칼럼으로 구성된 
+--직급, 부서번호 4개의 칼럼으로 구성된 
 --EMP04 테이블을 생성하되
 --사원번호에는 유일키로 사원명은 NOT NULL 제약조건을 설정
 
@@ -191,6 +209,7 @@ select * from emp04;
 --사원번호, 사원명, 직급, 부서번호 4개의 칼럼으로 구성된 
 --테이블을 생성하되 기본 키 제약조건을 설정
 --empno NUMBER(4) PRIMARY KEY <<이렇게만해도됨
+--PRIMARY KEY:개체무결성조건.
 create table emp05(
     empno NUMBER(4) CONSTRAINT EMP05_EMPNO_PK PRIMARY KEY , 
     ENAME VARCHAR2(10) CONSTRAINT EMP05_ENAME_NN NOT NULL, 
@@ -210,7 +229,7 @@ select * from emp06;
 --사원번호, 사원명, 직급, 부서번호 4개의 칼럼으로 구성된 
 --테이블을 생성하되 기본 키 제약조건을 설정
 --deptno를 외래키로 제약조건을 설정
-drop table emp06;
+drop table emp07;
 create table emp06(
     empno NUMBER(4) CONSTRAINT EMP06_EMPNO_PK PRIMARY KEY , 
     ENAME VARCHAR2(10) CONSTRAINT EMP06_ENAME_NN NOT NULL, 
@@ -234,9 +253,29 @@ select * from emp06;
 CREATE TABLE EMP07( 
 EMPNO NUMBER(4) CONSTRAINT EMP07_EMPNO_PK PRIMARY KEY , 
 ENAME VARCHAR2(10) CONSTRAINT EMP07_ENAME_NN NOT NULL, 
-SAL NUMBER(7, 2) CONSTRAINT EMP07_SAL_CK CHECK(SAL BETWEEN 500 AND 5000), 
 JOB VARCHAR2(10) default 'MANAGER',
-DEPTNO NUMBER(2) CONSTRAINT EMP06_ENAME_FK REFERENCES DEPT(DEPTNO),
+DEPTNO NUMBER(2) CONSTRAINT EMP07_ENAME_FK REFERENCES DEPT(DEPTNO),
 GENDER VARCHAR2(1) CONSTRAINT EMP07_GENDER_CK CHECK (GENDER IN('M', 'F')),-- CHECK (GENDER='M' or GENDER='F')
-birthday date default sysdate
-); 
+SAL NUMBER(7, 2) CONSTRAINT EMP07_SAL_CK CHECK(SAL BETWEEN 500 AND 5000), 
+BIRTHDAY DATE DEFAULT SYSDATE
+); ------------------------------------------------------------------
+
+CREATE TABLE EMP07(
+    EMPNO NUMBER(4) CONSTRAINT EMP07_EMPNO_PK PRIMARY KEY,
+    ENAME VARCHAR2(10) CONSTRAINT EMP07_ENAME_NN NOT NULL,
+    JOB VARCHAR2(10) DEFAULT 'MANAGER',
+    DEPTNO NUMBER(2) CONSTRAINT EMP07_DEPTNO_FK REFERENCES DEPT(DEPTNO),--<<참조하는테이블. 
+    GENDER CHAR(1) CONSTRAINT EMP07_GENDER_CK CHECK (GENDER='M' OR GENDER='F'),
+    SAL NUMBER(7,2) CONSTRAINT EMP07_SAL_CK CHECK (SAL BETWEEN 500 AND 5000),
+    BIRTHDAY DATE DEFAULT SYSDATE
+);
+
+INSERT INTO EMP07 VALUES (1111, 'TEST', NULL, 10, 'F', 600, NULL);
+INSERT INTO EMP07 VALUES (1115, 'TEST', NULL, 10, 'M', 6000, NULL);
+INSERT INTO EMP07 VALUES (1116, 'TEST', NULL, 10, 'M', 6000, NULL);
+
+
+INSERT INTO EMP07 (EMPNO, ENAME, DEPTNO, GENDER, SAL) 
+           VALUES (1113, 'TEST', 10, 'F', 1600);
+
+SELECT * FROM EMP07;
