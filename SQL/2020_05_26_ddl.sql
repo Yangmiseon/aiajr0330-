@@ -165,5 +165,17 @@ select * from phoneInfo_univ;
 select * from phoneInfo_com;
 select * from phoneinfo_basic b,phoneInfo_univ u where b.idx=u.fr_ref;
 select * from phoneinfo_basic b,phoneInfo_com c where b.idx=c.fr_ref;
+
+
+
+--outer join사용
+--베이직을 표현하고 싶은 것이기 때문에 반대쪽에 (+)를 해준다.
+--그래야 비교해서 원하는 정보를 출력할 수 있음.
 select * from phoneinfo_basic b,phoneInfo_univ u,phoneInfo_com c 
 where b.idx=u.fr_ref(+) and b.idx=c.fr_ref(+);
+
+
+
+--외래키가 들어가있을때는 하위 단계부터 drop한다.
+--입력할때는 외래키의 상위가 먼저 등록이 된 후 하위가 등록이 되어야 한다.
+--현재 설정은 입력이 2번들어가야 학교친구가 된다. 기본정보+학교정보 회사친구도 마찬가지.
