@@ -3,9 +3,9 @@ package a1;
 import java.util.Scanner;
 
 public class DPMain {
-
+		static Scanner sc= new Scanner(System.in);
 	public static void main(String[] args) {
-		Scanner sc= new Scanner(System.in);
+		
 		while (true) {
 			System.out.println("1.모든정보 출력 2.친구 정보 입력 3.친구 검색 \n4.친구정보 수정"
 					+ "5.친구 정보 삭제 6.프로그램 종료");
@@ -32,9 +32,5 @@ public class DPMain {
 				break;
 			}
 		}
-
 	}
-	
-	
-
 }
