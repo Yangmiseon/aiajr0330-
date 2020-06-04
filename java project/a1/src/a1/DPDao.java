@@ -56,8 +56,8 @@ public class DPDao {
 			conn = ConnectionProvider.getConnection();
 			
 			String sql = "insert into phoneinfo_basic "
-					+ "(fr_Name, fr_phonenumber, fr_email, fr_address) "
-					+ "values(?, ?, ?, ?)";
+					+ "(idx, fr_Name, fr_phonenumber, fr_email, fr_address) "
+					+ "values(pb_basic_idx_seq.nextval,?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, phoneinfo.getFr_Name());
 			pstmt.setString(2, phoneinfo.getFr_phonenumber());
@@ -66,13 +66,38 @@ public class DPDao {
 			
 			resultCnt = pstmt.executeUpdate();
 			
-			rs.close();
-			pstmt.close();
-			conn.close();
-					
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+
+			// 4. 데이터베이스 연결 종료
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 		}
 				
 		return resultCnt;

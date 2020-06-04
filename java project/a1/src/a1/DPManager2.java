@@ -31,10 +31,11 @@ public class DPManager2 {
 	}
 
 	//친구 정보 입력
-	public void InfoInsert() {
+	public void InfoInsert() throws SQLException {
 					
 			
 			System.out.println("이름 입력>>");
+			DPMain.sc.nextLine();
 			String fr_Name = DPMain.sc.nextLine();
 			System.out.println("전화번호 입력>>");
 			String fr_phonenumber = DPMain.sc.nextLine();
@@ -43,15 +44,10 @@ public class DPManager2 {
 			System.out.println("주소 입력>>");
 			String fr_address = DPMain.sc.nextLine();
 			
-			PhoneInfo phoneinfo = new PhoneInfo(phoneinfo.setIdx(), fr_Name, fr_phonenumber, fr_email, fr_address);
+			PhoneInfo phoneinfo = new PhoneInfo(0, fr_Name, fr_phonenumber, fr_email, fr_address);
 			
 			int resultCnt = 0;
-			try {
 			resultCnt = dao.PhoneInsert(phoneinfo);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			if(resultCnt >0) {
 				System.out.println("정상적으로 입력 되었습니다.");
 				System.out.println(resultCnt + "행이 입력되었습니다.");

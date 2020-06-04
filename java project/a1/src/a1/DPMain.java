@@ -1,11 +1,12 @@
 package a1;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class DPMain {
 		static Scanner sc= new Scanner(System.in);
 		
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		DPManager2 dpm2 = new DPManager2();
 		while (true) {
 			System.out.println("1.모든정보 출력 2.친구 정보 입력 3.친구 검색 \n4.친구정보 수정"
