@@ -63,6 +63,7 @@ public class PhoneInfo {
 		return "PhoneInfo[idx= "+idx+", fr_Name= "+fr_Name+", fr_phonenumber"+fr_phonenumber+
 				", fr_email= "+fr_email+", fr_address = "+fr_address+"]";
 	}
+
 	
 	
 }

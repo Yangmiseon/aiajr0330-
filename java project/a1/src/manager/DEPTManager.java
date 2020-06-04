@@ -47,7 +47,7 @@ public class DEPTManager {
 		}
 
 	}
-
+	//public void EditInfo()
 	public void deptEdit() {
 
 		Connection conn = null;
@@ -177,7 +177,7 @@ public class DEPTManager {
 		}
 
 	}
-
+	//public void DeleteInfo()
 	public void deptDelete() {
 
 		// 사용자 입력정보 변수
@@ -199,7 +199,7 @@ public class DEPTManager {
 		System.out.println("=================================");
 
 	}
-
+	//public void SearchInfo()
 	public void deptSearch() {
 
 		// 사용자 입력정보 변수
