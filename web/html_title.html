@@ -1,0 +1,36 @@
+<!doctype hrml>
+<html>
+<head>
+    <title>Form tag</title>
+</head>
+
+<body>
+    <h1>Form tag</h1>
+    <hr>
+    <h2>input tag</h2>
+    이게디폴트다!!!!<input>
+    <br>
+    <input type="text" id="name" name="username"><br>
+    
+    <input type="password" id="pw" name="pw"><br>
+    
+    개인정보 방침에 동의 합니다.<input type="checkbox"> <br>
+    <input type="color"><br>
+    
+    <input type="date"><br>
+    <input type="datetime-local"><br>
+    <input type="file"><br>
+    <input type="reset"><br>
+    
+   
+    <h2>로그인</h2>
+
+    <form action="member/test.html" method="get">
+        아이디 <input type="text" name="id"><br>
+        <!--인라인 형식 줄바꿈하려면 블록태그나 줄바꿈태그사용해야함.-->
+        비밀번호<input typt="password" name="pw"><br>
+        <input type="email"><br>
+         <input type="reset"><br>
+        <input type="submit">
+    </form>
+</body></html>
