@@ -1,0 +1,187 @@
+<!coctype html>
+    <html>
+
+    <head>
+
+        <title>CSS 속성</title>
+        <meta charset="utf-8">
+        
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+        <style>
+            /*        CSS에서 사용하는 단위 : px, %, em
+            px:절대비율
+            % : 비율
+            em: 배수
+            
+            16px = 1em = 100%
+            32px = 2em = 200%
+            */
+
+            tr:nth-child(1)>td:nth-child(2) {
+                font-size: 16px;
+                color: red;
+            }
+
+            tr:nth-child(1)>td:nth-child(3) {
+                font-size: 24px;
+                color: blue;
+            }
+
+            tr:nth-child(1)>td:nth-child(4) {
+                font-size: 32px;
+                color: lime;
+            }
+
+            tr:nth-child(2)>td:nth-child(2) {
+                font-size: 1em;
+                color: #FF0000;
+            }
+
+            tr:nth-child(2)>td:nth-child(3) {
+                font-size: 1.5em;
+                color: #0000FF;
+            }
+
+            tr:nth-child(2)>td:nth-child(4) {
+                font-size: 2em;
+                color: #00FF00;
+            }
+
+            tr:nth-child(3)>td:nth-child(2) {
+                font-size: 100%;
+                color: rgb(255, 0, 0);
+            }
+
+            tr:nth-child(3)>td:nth-child(3) {
+                font-size: 150%;
+                color: rgb(0, 0, 255);
+            }
+
+            tr:nth-child(3)>td:nth-child(4) {
+                font-size: 200%;
+                color: rgb(0, 255, 0);
+            }
+
+            body {
+
+                background-image:url('../image/3.jpg'); 
+                background-size: 50%;
+                background-repeat: no-repeat;
+                background-position: right bottom;
+                background-attachment: fixed;
+            }
+            
+            
+
+            hr {
+                border: 0;
+                border-top: thin solid #aaaaaa;
+            }
+
+            div.box {
+                width: 200px;
+                height: 200px;
+                /*                border: 1px solid gray;*/
+            }
+
+            #b1 {
+                background-color: red;
+                border-width: 5px;
+                border-style: dashed;
+                border-color: chartreuse;
+            }
+
+            #b2 {
+                background-color: blue;
+                border-radius: 50%;
+            }
+
+            img {
+                border: thick dashed black;
+                 width: 200px;
+                height: 200px;
+                border-radius: 50%;
+            }
+            
+            span{
+                border:1px solid red;
+            }
+            #box{
+                border:1px solid blue;
+/*                display: none;*/
+                display: inline;
+            }
+            
+            #sp{
+                display: block;
+            }
+            
+            #bg{
+                height: 300px;;
+                width: 100%;
+                background-image: url(../image/4.png);
+                 background-size: cover;
+                color: aqua;
+                font-size: 5em;
+            }
+            .font_kor{
+                font-family:'Nanum Pen Script','Nanum Gothic','궁서체','돋움','궁서';
+                text-align: center;
+                line-height: 300px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="bg" class="font_kor">
+            스타워즈
+        </div>
+        <hr>
+        <span id="sp">Dummy</span>
+
+        <div id="box">
+
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+
+        </div>
+
+        <span>Dummy</span>
+
+        <hr>
+        <div>
+            <img src="../image/1.jpg">
+        </div>
+
+        <div class="box" id="b1">
+
+        </div>
+
+        <div class="box" id="b2">
+
+        </div>
+
+        <hr>
+        <table border="1">
+
+            <tr>
+                <td>px</td>
+                <td>child(1)16</td>
+                <td>child(1)24</td>
+                <td>child(1)32</td>
+            </tr>
+            <tr>
+                <td>em</td>
+                <td>child(2)</td>
+                <td>child(2)</td>
+                <td>child(2)</td>
+            </tr>
+            <tr>
+                <td>%</td>
+                <td>child(3)</td>
+                <td>child(3)</td>
+                <td>child(3)</td>
+            </tr>
+        </table>
+    </body>
+
+    </html>

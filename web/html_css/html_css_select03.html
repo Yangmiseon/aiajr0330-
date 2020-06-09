@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>11CSS3 선택자 Selector</title>
+    <meta charset="utf-8">
+    <style>
+        /*        
+        속성선택자
+        선택자[속성이름] : 특성속성을 가지는 테그들을 선택
+        ex) input[type] 
+        선택자[속성이름=속성값] : 특정 속성을 가지며, 속성에 특정 값을 가지는 테그들을 선택
+        ex) input[type=password]        
+        */
+        input {
+            height: 30px;
+            margin: 10px 0;
+        }
+
+        input[type] {
+/*            border: 1px solid blue;*/
+        }
+
+        input[type=text] {
+            background-color: aqua;
+        }
+
+        input[type=password] {
+            background-color: forestgreen;
+        }
+
+        img[alt] {
+            width: 100px;
+        }
+
+        img[src $=jpg] {
+            border: 1px solid red;
+        }
+
+        img[src $=png] {
+            border: 3px solid green;
+        }
+
+        /*        후손선택 : 선택의 범위를 제한
+        선택자 범위안의 선택자
+        div h1{
+            
+        }*/
+
+        #header h1.title {
+            color: blue;
+        }
+
+        #header h1 {
+            color: red;
+        }
+
+        #section h1 {
+            color: aqua;
+        }
+
+        form input {
+/*            width: 100%;*/
+        }
+
+        #header h1,
+        #header h2 {
+            color: yellow;
+        }
+
+        /*
+        자손선택자
+        자손의 경우는 범의가 좁다.
+        선택자>선택자 
+        div> h1{
+            div에 있는 h1이 선택이 된다.
+        }
+*/
+        #header>h1 {
+            background-color: deeppink;
+        }
+
+        table>tbody>tr>td {
+            color: red;
+        }
+
+        /*        동위 선택자:같은 레벨의(형제) 태그들을 기준으로 선택
+        + : 바로뒤의 요소 선택 밑에 밑에는 안됨. h5는안되고 h4만됨.
+        
+        ~ : 같은 레벨의 형제 태그들 중 선택
+        */
+
+        h3+h4 {
+            color: blue;
+        }
+
+        h3~h4.aa {
+            color: cornflowerblue;
+        }
+
+        /*        반응선택자
+        선택자:hover > 마우스 커서가 선택한 요소의 영역으로 들어갔을 때
+        
+        선택자:active
+        >>마우스 커서는 선택된 요소 위에 존재하고, 왼쪽 버튼을 클릭한 상태
+*/
+
+        h3 {
+            background-color: aqua;
+        }
+
+        h3:hover {
+            color: red;
+            font-size: 32px;
+        }
+
+        h4:active {
+            color: blue;
+            font-style: italic;
+            font-size: 32px;
+        }
+
+        #mf input {
+            background-color: white;
+        }
+        
+        #mf input:disabled{
+            background-color: dimgrey;
+        }
+        
+        #mf input:enabled{
+            background-color: bisque;
+        }
+        
+        #mf input[type=checkbox]{
+            width: 50px;
+            height: 50px;
+        }
+          #mf input[type=checkbox]:checked{
+/*
+            width:  : 50px;
+            height: 50px;
+*/
+        }
+
+        #view +div{
+           display: none; 
+        }
+
+        
+          #view:checked +div{
+            display: block;
+        }
+        
+        #nav{
+            overflow: hidden;
+        }
+        
+        #nav>li{
+            list-style: none;
+            float: left;
+            padding: 5px 15px;
+        }
+        
+/*
+        #nav>li:nth-child(1){지정을할수도 있고,
+        몇개인지 모를땐 수열로처리
+            background-color: aquamarine;
+        }
+*/
+         #nav>li:nth-child(2n+1){
+            background-color: aquamarine;
+        }
+         #nav>li:nth-child(2n){
+            background-color: aqua;
+        }
+        
+         #nav>li:first-child{
+/*           border: 1px solid gray;*/
+             border-radius: 10px 0 0 10px;
+        }
+        
+        #nav>li:last-child{
+/*           border: 1px solid gray;*/
+            border-radius:  0 10px 10px 0;
+        }
+        
+        p::first-letter{
+            font-size: 3em;
+        }
+        
+        p::first-line{
+            color: blueviolet;
+            font-weight: 100;
+        }
+        
+        p::selection{
+           background-color: yellow;
+            color: red;
+        }
+        
+        a:link{
+            color:red;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        a:hover{
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+
+    
+<body>
+    <h1>Lorem ipsum dolor sit amet</h1>
+ 
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+ 
+<p>Aenean ac erat et massa vehicula laoreet consequat et sem.<br>Aenean ac erat et massa vehicula laoreet consequat et sem.</p>
+
+    <hr>
+    <ul id="nav">
+        <li><a href="#1">home</a></li>
+        <li><a href="#1">company </a></li>
+        <li><a href="#1">service</a></li>
+        <li><a href="#1">product</a></li>
+        <li><a href="#1">notice</a></li>
+        <li><a href="#1">contents</a></li>
+        <li><a href="#1">emg</a></li>
+   
+    </ul>
+    <form id="mf">
+        
+        <div>
+            약관보여줘
+            <input type="checkbox" id="view">
+            <div>
+            <h4>이용약관</h4>
+                <p>문제시 강퇴1</p>
+            </div>
+        </div>
+        <div>
+            약관동의<input type="checkbox" checked>
+        </div>
+         <div>
+            선택동의<input type="checkbox">
+        </div>
+        <div>
+        <input type="text">
+        </div>
+        <div> <input type="text"disabled></div>
+       
+    
+        <div>
+            <input type="text" readonly>
+        </div>
+          <div>
+            <input type="text" >
+        </div>
+          <div>
+            <input type="number" required>
+        </div>
+        <input type="submit">
+    </form>
+    <hr>
+    <h3>1</h3>
+    <h3>1-2</h3>
+    <h4 class="aa">2-1</h4>
+    <h4 class="aa">2-2</h4>
+    <h4 class="aa">2-3</h4>
+    <h5>4</h5>
+
+
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td><input></td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td><input></td>
+        </tr>
+    </table>
+    <div id="header">
+        <h1 class="title">Title</h1>
+        <div id="nav">
+            <h1>네비게이션</h1>
+        </div>
+        <h1>ect</h1>
+        <h2>efghij</h2>
+    </div>
+
+
+    <div id="section">
+        <h1 class="title"> Title sec</h1>
+        <p>안녕하세요</p>
+    </div>
+    <h2>efghij23</h2>
+    <hr>
+
+    <h4>~이면 나도영향받음 +는 안받음.</h4>
+    <form>
+        <input>
+        <br>
+        <input type="text">
+        <br>
+        <input type="password">
+
+    </form>
+    <br>
+    <input>
+    <input>
+    <input>
+    <br>
+    <img src="../image/2.jpg" alt="mini">
+    <img src="../image/1.jpg">
+    <img src="../image/4.png">
+</body>
