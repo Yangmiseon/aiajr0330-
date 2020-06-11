@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>high&low game</title>
+
+    <script>
+        
+       while(true){
+        alert('랜덤숫자 게임을 시작합니다.');
+        alert('시도 횟수는 모두 10회입니다.');
+        var rnum=parseInt(Math.random()*100+1); 
+        var count=1;
+           while(count<11){
+            var userNum=prompt('1~100 사이의 숫자를 입력하세요');
+            if(rnum>userNum){
+                count++;
+               alert(+count+'번째 입니다. 더 큰수를 입력하세요');
+          
+           }else if(rnum<userNum){
+               count++;
+               alert(+count+'번째 입니다. 더 작은 수를 입력하세요');
+           
+           }
+           
+            if(rnum==userNum)  {
+               alert('축하합니다. 정답입니다.');   
+               break;
+            }else if(count>10){
+                alert('10회모두 소진하였습니다.');
+                alert('게임을 종료합니다.');   
+                break;  
+            }
+       }
+    }
+      
+    </script>
+    
+    
+</head>
+<body>
+    
+</body>
+</html>
