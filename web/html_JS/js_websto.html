@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage</title>
+
+    <script>
+        //문자 기반의 데이터 저장
+        //저장 장소 >> 브라우저
+        //key-value형식으로 저장
+        //cookie : 총저장공간이 4mb정도됨. javascript 혹은 server Side에서 생성 할수있는 특징이있다.
+        //         서버로 요청을 보낼때 모든 cookie정보를 함께 전송
+        //      쿠키가 유지되는 시간 설정 
+        //localStorage 라는 객체를 이용하면 약 25에서 40mb정도 사용할 수 있음. 명시적으로 삭제하지 않으면 생명주기가 없다.
+        
+        //데이터를 넣고
+        localStorage.setItem('name', '박지성');
+
+        //데이터를 꺼내고. 문자열로 가져오고 문자열로 꺼낸다.
+        var saveData=localStorage.getItem('name');
+        console.log('저장데이터: '+ saveData);
+
+        //수정=덮어쓰면됨.
+        localStorage.setItem('name', '손흥민');
+        var saveData1=localStorage.getItem('name');
+        console.log('저장데이터: '+ saveData1);
+
+        //삭제
+        // localStorage.removeItem('name');
+        // var saveData1=localStorage.getItem('name');
+        // console.log('저장데이터: '+ saveData1);
+
+        //전체삭제
+        //localStorage.clear();
+
+        //sessionStorage.setItem('sname','hong');
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

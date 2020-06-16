@@ -1,93 +1,63 @@
-<!coctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>로그인 Form</title>
-    <meta charset="utf-8">
-    <style>
-        h1,table{
-            margin: 50px auto;
-        }
-        td{
-           padding: 10px;
-        }
+    <head>
+        <title>로그인 Form</title>
+        <meta charset="utf-8">
         
-        h1{
-            margin: 15px;
-        }
+        <style>
         
-        #t{
-            margin: 10px auto;
-        }
-        
-        #btn_sumit{
-            padding: 5px;
-            background-color: aqua;
-            font-weight: 900;
-            color: red;
-            border: 1px solid #EEEEEE;
-        }
-        
-    </style>
-</head>
+            body, div, h1, form {
+                margin:0;
+                padding:0;
+            }
+            
+            h1 {
+                margin: 15px;
+            }
+            
+            #form {
+                margin : 10px auto;
+            }
+            
+            td {
+                padding : 10px;
+            }
+            
+            #btn_submit{
+                padding : 10px;
+                background-color: aquamarine;
+                font-weight: bold;
+                color: darkgreen;
+                border : 1px solid #EEEEEE;
+            }
+            
+            
+        </style>
 
-<body>
-    <h1>회원 로그인</h1>
-    <hr>
-    <form action="" method="get">
-        <table id="t">
+    </head>
+    <body>
+        <h1>회원 로그인</h1>
+        <hr>
+        <form action="" method="get" id="loginForm">
+        <table id="form">
             <tr>
                 <td>아이디(이메일)</td>
-                <td><input type="text" name="id"><br></td>
+                <td><input type="text" name="id" id="id"></td>
             </tr>
-
             <tr>
                 <td>비밀번호</td>
-                <td><input type="password" name="pw"><br></td>
+                <td><input type="password" name="pw" id="pw"></td>
             </tr>
-
             <tr>
                 <td></td>
-                <td><input id="btn_sumit" type="submit" value="로그인"></td>
+                <td><input id="btn_submit" type="submit" value="로그인"></td>
             </tr>
-
         </table>
-    </form>
-    
-    <hr>
-    <form action="" method="get">
-        <table>
-            <tr>
-                <td>아이디(이메일)</td>
-                <td><input type="text" name="id"><br></td>
-            </tr>
+        </form>
+        
+        
+        
+    </body>
+    <script src="../html_JS/js/login_check.js"></script>
 
-            <tr>
-                <td>비밀번호</td>
-                <td><input type="password" name="pw"><br></td>
-            </tr>
-            
-             <tr>
-                <td>이름</td>
-                <td><input type="text" name="uname"><br></td>
-            </tr>
-            
-             <tr>
-                <td>사진</td>
-                <td><input type="file" name="uphoto"><br></td>
-            </tr>
-            <br>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="등록">
-                    <input type="reset">
-                </td>
-                
-            </tr>
-
-        </table>
-    </form>
-    아이디(이메일) <input type="text"><br>
-    비밀번호 <input type="password"><br>
-    <input type="submit" value="로그인">
-</body>
 </html>
