@@ -57,6 +57,7 @@ local.properties
 # Annotation Processing
 .apt_generated/
 .apt_generated_test/
+.sts4-cache/
 
 # Scala IDE specific (Scala & Java development for Eclipse)
 .cache-main
@@ -70,6 +71,10 @@ local.properties
 ### Eclipse Patch ###
 # Spring Boot Tooling
 .sts4-cache/
+.project
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
 
 ### Java ###
 # Compiled class file
@@ -101,3 +106,4 @@ hs_err_pid*
 target/
 
 # End of https://www.toptal.com/developers/gitignore/api/java,java-web,eclipse
+*.exe
