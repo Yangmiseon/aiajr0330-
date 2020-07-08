@@ -36,7 +36,7 @@ public class JDBCTest1 {
 		//3. sql로 데이터 처리..
 		//Statement stmt = conn.createStatement();
 		Statement stmt = conn.createStatement();
-		String sql = "select * from dept order by deptno";
+		String sql = "select * from phoneinfo_basic";
 		
 		
 		//셀렉의 경과는 리절트셋이 받는다.
