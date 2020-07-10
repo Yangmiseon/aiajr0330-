@@ -80,19 +80,39 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
   	<location>/error/error_null.jsp</location>
   </error-page>
   
+   <!-- 필터등록 설정 -->
+ <filter>
+ 	<filter-name>loginCheckFilter</filter-name>
+ 	<filter-class>filter.LoginFilter</filter-class>
+ </filter>
   
   
+  <filter-mapping>
+  	<filter-name>loginCheckFilter</filter-name>
+	<url-pattern>/mypage/*</url-pattern>
+  </filter-mapping>
   
   
+   <filter>
+   <filter-name>encodingFilter</filter-name>
+   <filter-class>filter.CharacterEncodingFilter</filter-class>
+   </filter>
   
   
+   <filter-mapping>
+   <filter-name>encodingFilter</filter-name>
+   <url-pattern>/*</url-pattern><!--*: 모든 요청에 대해 필터를 사용하겠다!  -->
+   </filter-mapping>
   
+  <listener>
+  	<listener-class>listener.TestContextListener</listener-class>
+  </listener>
   
-  
-  
-  
-  
-  
+  <context-param>
+  	<param-name>uploadPath</param-name>
+  	<!--<param-value>/file</param-value> -->
+  	 <param-value>/uploadFile/member/photo</param-value>
+  </context-param>
   
   
   

@@ -1,4 +1,4 @@
-<%@page import="guestbook.jdbc.ConnectionProvider"%>
+<%@page import="jdbc.ConnectionProvider"%>
 <%@page import="dao.EmpDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Emp"%>
