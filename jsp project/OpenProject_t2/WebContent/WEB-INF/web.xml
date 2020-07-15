@@ -21,7 +21,7 @@
   <!-- dbcp등록 :초기화 -->
   <servlet>
   	<servlet-name>DBCPInit</servlet-name>
-  	<servlet-class>guestbook.jdbc.DBCPInit</servlet-class>
+  	<servlet-class>jdbc.DBCPInit</servlet-class>
   	<load-on-startup>1</load-on-startup>
   </servlet>
 </web-app>
