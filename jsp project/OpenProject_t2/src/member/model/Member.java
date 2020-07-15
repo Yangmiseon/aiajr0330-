@@ -19,14 +19,6 @@ public class Member {
 		this.uphoto = uphoto;
 		this.regdate = regdate;
 	}
-	
-	public Member(int idx, String uid, String upw, String uname, String uphoto) {
-		this.idx = idx;
-		this.uid = uid;
-		this.upw = upw;
-		this.uname = uname;
-		this.uphoto = uphoto;
-	}
 
 	
 	public Member() {

@@ -6,7 +6,7 @@
 	<ul id="nav">
 		
 		<li><a href="${pageContext.request.contextPath}/member/memberRegForm.jsp">회원가입</a></li>
-		
+		<li><a href="${pageContext.request.contextPath}/member/memberList.jsp">회원정보 리스트</a></li>
 		<c:if test="${!empty loginInfo}">
 		<li><a href="<c:url value="member/logout.jsp"/>">로그아웃</a></li>
 		</c:if>

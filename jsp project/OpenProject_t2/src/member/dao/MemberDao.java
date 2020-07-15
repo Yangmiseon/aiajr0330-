@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import guestbook.model.Message;
 import member.model.Member;
 
 public class MemberDao {
@@ -77,37 +76,34 @@ public class MemberDao {
 	}
 
 	
-	public List<Member> selectMemberList(Connection conn, int startRow) throws SQLException{
+	public List<Member> selectMemberList(Connection conn, int startRow, int count) throws SQLException{
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		List<Member> list = new ArrayList();
-		
+		List<Member> list = new ArrayList<Member>();
+		String sql = "SELECT * FROM project.member limit ?, ?";
 		try {
-			
-			String sql = "SELECT * FROM member limit ?, 3;";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, count);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				Member member=new Member(
+				Member member = new Member(
 										rs.getInt("idx"),
 										rs.getString("uid"),
 										rs.getString("upw"),//굳이 패스워드받을이유없음
 										rs.getString("uname"),
-										rs.getString("uphoto"));
+										rs.getString("uphoto"),
+										rs.getDate("regdate"));
 				list.add(member);
 			}
 			
 		} finally {
 			
-			if(rs != null) {
-				rs.close();
-			}
 			if(pstmt != null) {
 				pstmt.close();
 			}
@@ -128,7 +124,7 @@ public class MemberDao {
 			stmt = conn.createStatement();
 			
 			//카운트를 구해오는 sql문 필요
-			String sql = "select count(*) from member";
+			String sql = "select count(*) from project.member";
 			rs = stmt.executeQuery(sql);
 			
 			//행하나받기
@@ -166,7 +162,8 @@ public class MemberDao {
 					rs.getString("uid"),
 					rs.getString("upw"),
 					rs.getString("uname"),
-					rs.getString("uphoto"));
+					rs.getString("uphoto"),
+					rs.getDate("regdate"));
 		}
 		}finally {
 			if(rs != null) {

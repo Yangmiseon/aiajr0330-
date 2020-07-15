@@ -3,17 +3,11 @@ package member.model;
 import java.util.List;
 
 public class MemberListView {
-	//전체 게시물의 개수
 		private int memberTotalCount;
-		//현재 페이지 번호
 		private int currentPageNumber;
-		//메시지 리스트
 		private List<Member> memberList;
-		//전체 페이지 개수
 		private int pageTotalCount;
-		//페이지 당 표현 게시물의 개수
 		private int memberCountPerpage;
-		//게시물의 시작 행
 		private int startRow;
 		
 		
@@ -79,9 +73,6 @@ public class MemberListView {
 					+ memberCountPerpage + ", startRow=" + startRow + "]";
 		}
 		
-		public boolean isEmpty() {
-			return memberTotalCount==0;
-		}
 		
 		
 		
