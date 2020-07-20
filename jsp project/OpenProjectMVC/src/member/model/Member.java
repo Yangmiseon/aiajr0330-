@@ -10,7 +10,7 @@ public class Member {
 	private String uname;
 	private String uphoto;
 	private Date regdate;
-	
+
 	public Member(int idx, String uid, String upw, String uname, String uphoto, Date regdate) {
 		this.idx = idx;
 		this.uid = uid;
@@ -20,11 +20,9 @@ public class Member {
 		this.regdate = regdate;
 	}
 
-	
 	public Member() {
 	}
 
-	
 	public int getIdx() {
 		return idx;
 	}
@@ -65,21 +63,18 @@ public class Member {
 		this.uphoto = uphoto;
 	}
 
-	public Date getRegdate() {//long타입으로 가져오게되기때문에 변수만드러줌
+	public Date getRegdate() {
 		return regdate;
 	}
 
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	
-	//변수
-	//java.sql.Date >> java.util.Date로 바꿔주는메서드
-	public java.util.Date getToDate(){//부를때>>${member.toDate}
-		
+
+	// java.sql.Date -> java.util.Date
+	public java.util.Date getToDate() {// ${member.toDate}
 		return new java.util.Date(regdate.getTime());
 	}
-
 
 	@Override
 	public String toString() {
@@ -87,6 +82,4 @@ public class Member {
 				+ ", regdate=" + regdate + "]";
 	}
 
-	
-	
 }

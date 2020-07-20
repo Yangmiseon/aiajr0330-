@@ -1,15 +1,15 @@
-package member.service;
+package session.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.Service;
 
-public class MemberRegFormServiceImpl implements Service {
+public class SessionLoginServiceimpl implements Service {
 
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
-		return "/WEB-INF/views/member/regForm.jsp";
+		return null;
 	}
 
 }

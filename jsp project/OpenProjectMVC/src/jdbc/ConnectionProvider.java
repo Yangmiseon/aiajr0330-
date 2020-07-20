@@ -6,25 +6,19 @@ import java.sql.SQLException;
 
 public class ConnectionProvider {
 	
-	/*
-	 * String dbUrl = "jdbc.oracle:thin:@localhost:1521:orcl"; String user =
-	 * "scott"; String pw = "tiger";
-	 */
 	public static Connection getConnection() throws SQLException {
 		
 		String jdbcUrl = "jdbc:apache:commons:dbcp:pool";
+		
 		return DriverManager.getConnection(jdbcUrl);
 		
-		
-		
 		// DB Connection 정보
-		/*
-		 * String dbUrl = "jdbc:oracle:thin:@localhost:1521:orcl"; String user =
-		 * "scott"; String pw = "tiger";
-		 */
+		//String dbUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
+		//String user = "scott";
+		//String pw = "tiger";
 		
 		//return DriverManager.getConnection(dbUrl, user, pw);
 	}
 	
-
+	
 }

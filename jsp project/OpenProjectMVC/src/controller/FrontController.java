@@ -31,6 +31,8 @@ public class FrontController extends HttpServlet{
 		// 3. map 에 사용자 요청 command 와 인스턴스를 저장
 		
 		
+		
+		
 		// 1. 외부 설정 파일의 내용을 메모리의 데이터로 이동 
 		
 		Properties prop = new Properties();
@@ -38,7 +40,7 @@ public class FrontController extends HttpServlet{
 		FileInputStream fis = null;
 		
 		// 설정파일의 웹 경로
-		String path = "/WEB-INF/command.properties";
+		String path = "/WEB-INF/commandService.propertise";
 		// 설정파일의 시스템 절대경로
 		String configFile = config.getServletContext().getRealPath(path);
 		
