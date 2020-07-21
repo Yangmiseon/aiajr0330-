@@ -257,7 +257,41 @@ public class MemberDao {
 	////////////////////////////////////////////////////
 
 	
-	
+public Member userInfo(String uid, Connection conn) {
+		Member member=null;
+		PreparedStatement pstmt = null;
+		ResultSet rs;
+		
+		try {
+					
+			String sql = "select * from bit.member where uid=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, uid);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member = new Member();
+				member.setIdx(rs.getInt("idx"));
+				member.setUid(rs.getString("uid"));
+				member.setUpw(rs.getString("upw"));
+				member.setUname(rs.getString("uname"));
+				member.setUphoto(rs.getString("uphoto"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+				try {
+					if(pstmt != null) pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			
+		}
+		return member;
+	}
 	
 	
 	

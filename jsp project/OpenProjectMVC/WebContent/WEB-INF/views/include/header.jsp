@@ -10,7 +10,7 @@
 		<li><a href="<c:url value="/member/memberList.do"/>">회원 리스트</a></li>
 		
 		<c:if test="${!empty sessionID}">
-		<li><a href="<c:url value="member/logout.do"/>">로그아웃</a></li>
+		<li><a href="<c:url value="/member/logout.do"/>">로그아웃</a></li>
 		</c:if>
 		
 		<c:if test="${empty sessionID}">

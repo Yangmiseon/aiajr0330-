@@ -19,7 +19,6 @@ public class LoginRegServiceImpl implements Service {
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
 		
-		String context=request.getContextPath();
 		response.setContentType("text/html; charset=UTF-8");
 		Member sessionmember = new Member();
 		 
@@ -27,7 +26,7 @@ public class LoginRegServiceImpl implements Service {
 		String upw = request.getParameter("upw");
 		String page = "/WEB-INF/views/member/loginReg.jsp";
 		Connection conn = null;
-		
+	
 		int resultCnt = 0;
 		
 

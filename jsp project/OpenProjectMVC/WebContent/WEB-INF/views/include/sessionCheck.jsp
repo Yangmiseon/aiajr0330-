@@ -16,8 +16,10 @@
 <c:if test="${sessionID == null }">
 	<script>
 		alert('로그인이 필요한 페이지 입니다.');		
-		location.href= "/member/loginRegForm.do";
+		location.href= "<c:url value="/member/loginRegForm.do" />";
 	</script>
 </c:if>
+
+
 </body>
 </html>

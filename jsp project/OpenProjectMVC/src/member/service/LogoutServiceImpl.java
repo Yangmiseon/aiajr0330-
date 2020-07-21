@@ -9,7 +9,8 @@ public class LogoutServiceImpl implements Service {
 
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
+		request.getSession().invalidate();
 		return "/WEB-INF/views/member/logout.jsp";
 	}
 
