@@ -1,6 +1,5 @@
 package com.app.op.member;
 
-import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,7 +32,7 @@ public class MemberController {
 			MemberRegRequest regRequest,
 			HttpServletRequest request,
 			Model model
-			) throws IllegalStateException, IOException {
+			)  {
 		
 	
 		System.out.println("controller : "+regRequest);

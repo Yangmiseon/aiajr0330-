@@ -6,11 +6,13 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.op.member.dao.JdbcTemplateMemberDao;
+import com.app.op.member.dao.MemberDaoInterface;
 import com.app.op.member.model.Member;
 import com.app.op.member.model.MemberEditRequest;
 import com.app.op.member.model.MemberRegRequest;
@@ -18,11 +20,14 @@ import com.app.op.member.model.MemberRegRequest;
 @Service
 public class MemberEditService {
 	
+	private MemberDaoInterface dao;
+	
 	@Autowired
-	JdbcTemplateMemberDao dao;
+	private SqlSessionTemplate sessionTemplate;
+	//JdbcTemplateMemberDao dao;
 	
 	public Member getMember(int uidx) {
-
+		dao= sessionTemplate.getMapper(MemberDaoInterface.class);
 		Member member = null;
 
 			member = dao.selectByIdx(uidx);
@@ -31,7 +36,12 @@ public class MemberEditService {
 		return member;
 	}
 
-	public int editMember(MemberEditRequest editRequest, HttpServletRequest request) throws IllegalStateException, IOException, SQLException {
+	public int editMember(
+			MemberEditRequest editRequest, 
+			HttpServletRequest request) 
+					throws IllegalStateException, IOException, SQLException {
+		
+		dao= sessionTemplate.getMapper(MemberDaoInterface.class);
 		int result = 0;
 
 		// MemberEditRequest -> Member : 이전 파일을 photo에 저장하고 시작

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>회원리스트</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
 
@@ -15,6 +15,12 @@
 		width :50px;
 		height : 50px;
 	}
+	
+	div.searchBox{
+		border: 1px solid #DDD;
+		padding: 20px;
+		width: 75%;
+	}
 </style>
 </head>
 <body>
@@ -23,18 +29,31 @@
 
 	<div>
 		<h1 class="subtitle">회원 리스트</h1>
-
+			${loginInfo.uid }
 		<c:if test="${not empty listView  }">
 
 		<div>전체회원 ${listView.memberTotalCount} 명</div>
 		<hr>
 
+		<div class="searchBox">
+			<form><!-- 아무것도 없으니까 현재 리스트에 겟방식으로 들어가게됨 -->
+				<select name="searchType">
+					<option value="id">ID</option>
+					<option value="name">NAME</option>
+					<option value="both">ID+NAME</option>
+				</select>
+				
+				<input type="text" name="keyword">
+				<input type="submit" value="검색">
+			</form>
+		</div>
 		<table class="table">
 			<tr>
 				<th>no</th>
 				<th>아이디</th>
-				<th>이름</th>
 				<th>비밀번호</th>
+				<th>이름</th>
+				<th>전화번호</th>
 				<th>사진</th>
 				<th>관리</th>
 			</tr>
@@ -47,6 +66,7 @@
 				<td>${member.uid}</td>
 				<td>${member.upw}</td>
 				<td>${member.uname}</td>
+				<td>${member.uphonenumber}</td>
 				<td><img alt="프사 " src="${imagePath}/${member.uphoto}">  </td>
 				<td>
 				<a href="memberEdit?uidx=${member.uidx}">수정</a> 
@@ -68,7 +88,8 @@
 		<div class="paging">
 			<c:forEach begin="1" end="${listView.pageTotalCount}" var="i">
 			
-			<a class="paging_num ${i == listView.currentPageNumber ? 'now_page' : ''}" href="memberList?page=${i}" >${i}</a>
+			<a class="paging_num ${i == listView.currentPageNumber ? 'now_page' : ''}" 
+			href="memberList?page=${i}&searchType=${param.searchType}&keyword=${param.keyword}" >${i}</a>
 			
 			</c:forEach>
 		</div>

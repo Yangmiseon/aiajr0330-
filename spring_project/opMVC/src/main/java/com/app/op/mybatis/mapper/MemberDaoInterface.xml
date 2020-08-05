@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- sql 설정 : sql문, 반환타입, 파라미터 설정 -->
+
+<mapper namespace="com.app.op.member.dao.MemberDaoInterface">
+
+	<!-- select의 결과를 객체에 바인딩 역할 : 
+						테이블의 컬럼명과 java bean의 변수의 이름이 틀린경우
+						아이디는 프라이머리키 지정해주기. -->
+	<resultMap id="resultMember"
+			   type="com.app.op.member.model.Member" >
+			   
+		<id property="uidx" column="uidx"/>		
+		<result property="uid" column="uid"/>	   
+		<result property="upw" column="upw"/>
+		<result property="uname" column="uname"/>
+		<result property="uphonenumber" column="uphonenumber"/>
+		<result property="uphoto" column="uphoto"/>
+	</resultMap>
+	
+	
+	
+	<!-- insert를 만들어줌 -->
+	
+		<insert id="insertMember"
+			parameterType="com.app.op.member.model.Member"
+			useGeneratedKeys="true"
+			keyProperty="uidx"
+	>
+		INSERT INTO project.member(uid,upw,uname,uphonenumber,uphoto)
+		VALUES(#{uid},#{upw},#{uname},#{uphonenumber},#{uphoto})
+	
+	</insert>
+	
+	
+	
+	
+	<!-- 여기는 에디트 영역!!! uidx로 수정할거 잡아와서  수정함!-->
+	<select id="selectByIdx"
+			resultType="com.app.op.member.model.Member"
+	>
+		select * from project.member where uidx=#{uidx}
+	
+	</select>
+	
+	
+	<update id="editMember"
+			parameterType="com.app.op.member.model.Member"
+	>
+		update project.member set upw=#{uid}, uname=#{uname}, uphonenumber=#{uphonenumber}, uphoto=#{uphoto} where uidx=#{uidx}
+	</update>
+
+	
+
+
+
+		<!-- 여기는 로그인 영역!!! id와 pw를 이용하여 함!-->
+	<select id="selectByIdpw"
+			resultType="com.app.op.member.model.Member"
+	>
+		select * from project.member where uid=#{param1} and upw=#{param2}
+	
+	</select>
+	
+	<select id="selectById"
+			resultType="com.app.op.member.model.Member"
+	>
+		select * from project.member where uid=#{uid}
+	
+	</select>
+	
+	
+	<!-- 검색:id, name, id or name
+		map.put("searchType", "id")name, both 이걸 맵에 넣으면 서치타입으로 꺼내 사용할수 있음.
+		concat이라는 함수를 사용함.
+	-->
+	<!-- 여기서 map은 해쉬맵이라고 생각하면됨 해쉬맵으로 들어오는거다. -->
+	<select id="totalCount"
+			parameterType="map"
+			resultType="int"
+			>
+	<!-- 	#{search.searchType}	 
+		인터페이스에서는 저걸만들어 보내줄거고. 저 두개를 해쉬맵에 넣어 처리할거임-->	
+		select count(*) from project.member
+		
+		<where>
+			<if test="searchType != null">
+				
+				<if test="searchType=='both'">
+					<include refid="whereID"/>
+					<include refid="whereName"/>
+				</if>
+				
+				<if test="searchType=='id'">
+					<include refid="whereID"/>
+				</if>
+				
+				<if test="searchType=='name'">
+					<include refid="whereName"/>
+				</if>
+				
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectList"
+	 		parameterType="map"
+	 		resultMap="resultMember">
+	 		
+	 	select * from project.member	
+	 	
+	 	<where>
+	 	
+			<if test="searchType != null">
+				
+				<if test="searchType=='both'">
+					<include refid="whereID"/>
+					<include refid="whereName"/>
+				</if>
+				
+				<if test="searchType=='id'">
+					<include refid="whereID"/>
+				</if>
+				
+				<if test="searchType=='name'">
+					<include refid="whereName"/>
+				</if>
+				
+			</if>
+		</where>
+		
+		limit #{startRow}, #{count}<!-- map에 묶어서 보내걸임 search.을 붙여줌. -->
+	 		
+	</select>
+	
+	<sql id="whereID">
+		or uid like concat('%',#{keyword},'%')
+	</sql>
+	<sql id="whereName">
+		or uname like concat('%',#{keyword},'%')
+	</sql>
+
+
+
+
+
+
+	
+</mapper>
+
+<!-- 
+	 검색:id, name, id or name
+		map.put("searchType", "id")name, both 이걸 맵에 넣으면 서치타입으로 꺼내 사용할수 있음.
+		concat이라는 함수를 사용함.
+	
+<select id="selectBykeyword"
+			parameterType="map"
+			resultMap="resultMember">
+		select * from project.member 
+		
+	
+		
+		<where>
+		<if test="searchType !=null and keyword !=null">
+			<if test="searchType =='both'">
+				<include refid="whereID"/>
+				<include refid="whereName"/>
+			</if>
+			<if test="searchType =='id'">
+				<include refid="whereID"/>
+			</if>
+			<if test="searchType =='name'">
+				<include refid="whereName"/>
+			</if>
+		</if>
+		</where>
+		<where>
+		<if test="searchType !=null && keyword !=null">
+			<if test="searchType =='both'">
+				uid like concat('%',#{keyword},'%') or uname like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType =='id'">
+				uid like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType =='name'">
+				uname like concat('%',#{keyword},'%')
+			</if>
+		</if>
+		</where>
+	</select> -->

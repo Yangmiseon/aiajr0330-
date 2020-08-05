@@ -23,28 +23,29 @@ public class JdbcTemplateMemberDao {
 	
 	
 	
+	/*
+	 * public int insertMember(Member member) {
+	 * 
+	 * String sql =
+	 * "INSERT INTO project.member(uid,upw,uname,uphonenumber,uphoto)VALUES(?,?,?,?,?)"
+	 * ;
+	 * 
+	 * return jdbcTemplate.update(sql, member.getUid(), member.getUpw(),
+	 * member.getUname(), member.getUphonenumber(), member.getUphoto()); }
+	 */
 	
-	public int insertMember(Member member) {
-		
-		String sql = "INSERT INTO project.member(uid,upw,uname,uphonenumber,uphoto)VALUES(?,?,?,?,?)";
-		
-		return jdbcTemplate.update(sql, member.getUid(), member.getUpw(), member.getUname(), member.getUphonenumber(), member.getUphoto());
-	}
 	
-	
-	
-	public Member selectByIdx(int uidx) {
-		
-		Member member = null;
-		
-	
-		String sql = "select * from project.member where uidx=?";
-			
-		member = jdbcTemplate.queryForObject(sql, new MemberRowMapper(),uidx);
-		
-		return member;
-	}
-	
+	  public Member selectByIdx(int uidx) {
+	  
+	  Member member = null;
+	  
+	  
+	  String sql = "select * from project.member where uidx=?";
+	  
+	  member = jdbcTemplate.queryForObject(sql, new MemberRowMapper(),uidx);
+	  
+	  return member; }
+	 
 	
 	
 	public int editMember(Member member) throws SQLException {
@@ -125,15 +126,16 @@ public class JdbcTemplateMemberDao {
 	
 	
 	
-	public Member selectByIdpw(String uid, String upw) {
-
-		
-		
-		String sql = "select * from project.member where uid=? and upw=?";
-		
-
-		return jdbcTemplate.queryForObject(sql, new MemberRowMapper(),uid, upw);
-	}
+	/*
+	 * public Member selectByIdpw(String uid, String upw) {
+	 * 
+	 * 
+	 * 
+	 * String sql = "select * from project.member where uid=? and upw=?";
+	 * 
+	 * 
+	 * return jdbcTemplate.queryForObject(sql, new MemberRowMapper(),uid, upw); }
+	 */
 
 
 
