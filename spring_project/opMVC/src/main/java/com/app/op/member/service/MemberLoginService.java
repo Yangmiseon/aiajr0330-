@@ -53,7 +53,7 @@ public class MemberLoginService {
 				// 쿠키 설정에 사용한 변수
 				String cookieName = "uid";
 				String cookiepath = session.getServletContext().getContextPath();
-				System.out.println("너의 정보는?????????????? : " + cookiepath);
+				System.out.println("너의 정보는?????????????? : " + loginInfo.getUid());
 				// 회원 아이디 쿠키 설정
 				if (loginRequest.getRemember() != null) {
 					response.addCookie(CookieBox.createCookie(cookieName, loginRequest.getUid(), cookiepath, 60 * 60 * 24 * 365));

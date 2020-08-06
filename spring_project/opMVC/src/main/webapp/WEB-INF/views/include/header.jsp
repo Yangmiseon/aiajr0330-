@@ -8,6 +8,10 @@
 		<li><a href="${pageContext.request.contextPath}/member/memberReg">회원가입</a></li>
 		
 		<li><a href="<c:url value="/member/memberList"/>">회원 리스트</a></li>
+		<li><a href="<c:url value="/member/memberList.xml"/>">member-XML</a></li>
+		<li><a href="<c:url value="/member/memberList.json"/>">member-json</a></li>
+		
+		
 		
 		<c:if test="${!empty loginInfo}">
 		<li><a href="<c:url value="/login/logout"/>">로그아웃</a></li>
@@ -17,6 +21,8 @@
 		<li><a href="<c:url value="/login/login"/>">로그인</a></li>
 		</c:if>
 		<li><a href="<c:url value="/member/mypage"/>">마이페이지1</a></li>
+		<li><a href="<c:url value="/member/view"/>">회원정보</a></li>
+		
 		<li><a href="<c:url value="/guestbook/list"/>">방명록(비회원)</a></li>
 		<li><a href="<c:url value="/board/list"/>">방명록(회원제)</a></li>
 	</ul>

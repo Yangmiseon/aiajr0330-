@@ -16,7 +16,7 @@
 
 <style>
 	td>img{
-		width :50px;
+		width :50px;9
 		height : 50px;
 	}
 	
@@ -48,8 +48,8 @@
 			
 		<%--<c:url value="${initParam['memberUploadPath']}" var="imagePath"/>--%>
 			<tr>
-				<td>${member.uid}</td>
-				 <td>${member.upw}</td>
+				<td>${loginInfo.uid}</td>
+				 <td>${memberInfo.upw}</td>
 				<%--<td>${loginInfo.uname}</td>
 				<td>${loginInfo.uphonenumber}</td>
 				<td><img alt="프사 " src="${imagePath}/${loginInfo.uphoto}">  </td>

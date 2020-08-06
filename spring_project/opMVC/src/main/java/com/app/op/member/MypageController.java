@@ -25,7 +25,7 @@ public class MypageController {
 				@RequestParam("uid") String uid
 			) {
 		
-		model.addAttribute("member", mypageService.membermypage(uid, request));
+		model.addAttribute("memberInfo", mypageService);
 		return "member/mypage";
 	}
 }

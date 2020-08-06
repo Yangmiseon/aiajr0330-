@@ -21,6 +21,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="uphoto" column="uphoto"/>
 	</resultMap>
 	
+	<select id="selectTotalListXml"
+			resultType="com.app.op.member.model.MemberXML">
+			
+			select * from project.member order by uidx desc
+	
+	</select>
+	
 	
 	
 	<!-- insert를 만들어줌 -->
@@ -73,6 +80,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	<!-- 제이슨 사용 멤버리스트 반환  -->
+	<select id="selectTotalList"
+			resultMap="resultMember">
+			
+		select * from project.member order by uidx desc
+	</select>
+			
+			
+			
 	<!-- 검색:id, name, id or name
 		map.put("searchType", "id")name, both 이걸 맵에 넣으면 서치타입으로 꺼내 사용할수 있음.
 		concat이라는 함수를 사용함.
@@ -85,6 +101,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 	#{search.searchType}	 
 		인터페이스에서는 저걸만들어 보내줄거고. 저 두개를 해쉬맵에 넣어 처리할거임-->	
 		select count(*) from project.member
+		
+		<!-- <![CDATA[uidx<10 and uidx>1]]> 
+		엘리먼트 <> 를 엘리먼트의 시작과 끝으로 인식하지 않도록 처리
+		CDATA요걸로 검색을 해도 많이 나옴.
+		-->
 		
 		<where>
 			<if test="searchType != null">

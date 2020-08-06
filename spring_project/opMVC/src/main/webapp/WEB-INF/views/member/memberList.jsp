@@ -71,7 +71,8 @@
 				<td>
 				<a href="memberEdit?uidx=${member.uidx}">수정</a> 
 				| 
-				<a href="javascript:memberDel(${member.uidx})">삭제</a></td>
+				<a href="javascript:memberDel(${member.uidx})">삭제</a>
+				<a href="view/${member.uidx}">보기</a></td>
 			</tr>
 		</c:forEach>
 		</c:if>
