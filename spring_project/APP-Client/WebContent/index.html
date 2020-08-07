@@ -57,6 +57,22 @@
 		
 	});
 	
+	function deleteMember(uidx){
+		
+		if(confirm('정말 삭제하시겠습니까?')){
+			$.ajax({
+				
+				url:'http://localhost:8080/mm/members/'+uidx,
+				type:'DELETE',
+				success: function(data) {
+					alert(data);
+					memberList();
+					
+				}
+			});
+		}
+	}
+	
 	function editSubmit(){
 
 		var regFormData = new FormData();
@@ -158,7 +174,7 @@
 					html += '		<li>uName : '+data[i].uname+'</li>';
 					html += '		<li>uPhoto :'+data[i].uphoto+'</li>';
 					html += '		<li><input type="button" value="수정" onclick="editForm('+data[i].uidx+')"> ';
-					html += '		<input type="button" value="삭제"></li>';
+					html += '		<input type="button" value="삭제" onclick="deleteMember('+data[i].uidx+')"></li>';
 					html += '	</ul>';
 					html += '</div>';
 				}

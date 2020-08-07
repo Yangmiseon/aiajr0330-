@@ -6,6 +6,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.aia.mm.dao.MemberDao">
 
+	<delete id="deleteMember">
+	
+		delete from project.member where uidx=#{uidx}
+		
+	</delete>
+
 	<update id="editMember"
 			parameterType="com.aia.mm.model.Member">
 			
