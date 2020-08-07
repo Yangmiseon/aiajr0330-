@@ -1,4 +1,4 @@
-package com.app.op.member.model;
+package com.aia.mm.model;
 
 import org.springframework.web.multipart.MultipartFile;
 

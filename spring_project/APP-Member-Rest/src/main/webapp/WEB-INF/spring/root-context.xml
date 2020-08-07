@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		<bean id="dataSource"
+		  class="com.zaxxer.hikari.HikariDataSource"
+		  p:driverClassName="com.mysql.cj.jdbc.Driver"
+		  p:jdbcUrl="jdbc:mysql://localhost:3306/project?serverTimezone=UTC"
+		  p:username="bit"
+		  p:password="bit"
+		  
+	>
+	</bean>
+	<!-- sqlSessionFactory 생성
+		
+		mybatis-spring : SqlSessionfactoryBean
+		
+		:dataSource 설정, mapper 설정
+	 -->
+	 
+	 <bean id="sqlSessionFactory"  
+  		   class="org.mybatis.spring.SqlSessionFactoryBean"
+ 		 p:dataSource-ref="dataSource" 
+ 		 p:mapperLocations="/WEB-INF/mapper/*.xml"
+	>		</bean>
+	
+	
+	
+	<!-- mybatis를 이용하는 template 클래스 =>  sqlSessionTemplate	
+		sqlSessionFactory이걸 주입받아 써야함.
+		얘는 생성자 주입받아야함.
+		SqlSessionTemplate클래스의 여러 생성자중 0번째라고 인덱스를 지정해줌.
+	 -->
+	
+	<bean id="sqlSession"  
+  		   class="org.mybatis.spring.SqlSessionTemplate">
+  		   
+  		   <constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+</beans>
