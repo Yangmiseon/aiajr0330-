@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aia.it.member.dao.MemberDaoInterface">
+
+<!-- select의 결과를 객체에 바인딩 역할 : 
+						테이블의 컬럼명과 java bean의 변수의 이름이 틀린경우
+						아이디는 프라이머리키 지정해주기. -->
+	<resultMap id="resultMember"
+			   type="com.aia.it.member.model.Member" >
+			   
+		<id property="uidx" column="uidx"/>		
+		<result property="uid" column="uid"/>	   
+		<result property="upw" column="upw"/>
+		<result property="uname" column="uname"/>
+		<result property="uphonenumber" column="uphonenumber"/>
+		<result property="uphoto" column="uphoto"/>
+	</resultMap>
+	
+	<!-- 회원가입 -->
+	<insert id="insertMember"
+			parameterType="com.aia.it.member.model.Member"
+			useGeneratedKeys="true"
+			keyProperty="uidx"
+	>
+		INSERT INTO planit.member(uid,upw,uname,uphonenumber,uphoto)
+		VALUES(#{uid},#{upw},#{uname},#{uphonenumber},#{uphoto})
+	
+	</insert>
+	
+	<select id="selectById"
+			resultType="int">
+		select * from planit.member where uid=#{uid}	
+	</select>
+
+</mapper>
