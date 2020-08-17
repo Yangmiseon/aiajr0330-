@@ -8,7 +8,7 @@ public class MemberRegRequest {
 	private String uid;
 	private String upw;
 	private String uname;
-	private String uphonenumber;
+	private String uphonenum;
 	private MultipartFile uphoto;
 	
 	
@@ -30,11 +30,12 @@ public class MemberRegRequest {
 	public void setUname(String uname) {
 		this.uname = uname;
 	}
-	public String getUphonenumber() {
-		return uphonenumber;
+	
+	public String getUphonenum() {
+		return uphonenum;
 	}
-	public void setUphonenumber(String uphonenumber) {
-		this.uphonenumber = uphonenumber;
+	public void setUphonenum(String uphonenum) {
+		this.uphonenum = uphonenum;
 	}
 	public MultipartFile getUphoto() {
 		return uphoto;
@@ -47,13 +48,13 @@ public class MemberRegRequest {
 	//MemberRegRequest에서 멤버로 보내줄때
 	public Member toMember() {
 		
-		return new Member(uid, upw,uname, uphonenumber);
+		return new Member(uid, upw,uname, uphonenum);
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "MemberRegRequest [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", uphonenumber=" + uphonenumber
+		return "MemberRegRequest [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", uphonenum=" + uphonenum
 				+ ", uphoto=" + uphoto + "]";
 	}
 	

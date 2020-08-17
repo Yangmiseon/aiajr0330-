@@ -26,7 +26,7 @@ public class IdCheckService {
 
 				int resultCnt = dao.selectById(uid);
 
-				if (resultCnt > 1) {
+				if (resultCnt < 1) {
 					result = "Y";
 				}
 

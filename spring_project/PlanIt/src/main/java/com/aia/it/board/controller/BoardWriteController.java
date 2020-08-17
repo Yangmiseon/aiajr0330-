@@ -1,6 +1,7 @@
 package com.aia.it.board.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,16 +11,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aia.it.board.model.BoardRequest;
 import com.aia.it.board.service.BoardWriteService;
+import com.aia.it.member.service.MemberListService;
 
 @Controller
+@RequestMapping("/board/boardWrite")
 public class BoardWriteController {
 	
 	@Autowired
 	BoardWriteService writeService;
 	
+	@Autowired
+	private MemberListService listService;
+	
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String getBoardForm() {
+	public String getBoardForm(
+			Model model,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		model.addAttribute("memberListView", listService.getview(request, response));
+
 		return "board/boardWriteForm";
 	}
 	@RequestMapping(method = RequestMethod.POST)
@@ -35,5 +47,7 @@ public class BoardWriteController {
 		return "board/boardWrite";
 		
 	}
-
+	
+	
 }
+

@@ -31,17 +31,16 @@ public class MemberRegService {
 		 int result=0;
 		  
 		  Member member = regRequest.toMember();	  
-		  
+	try {  
 		  MultipartFile file = regRequest.getUphoto();
 		  
 		  System.out.println(regRequest);
 		  
 		  //사진이 있다면 사진 파일을 물리적으로 저장, 없다면 기본 이미지 파일의 경로를 저장
-		  if(file != null &&
-		  !file.isEmpty() && file.getSize()>0) {
+	if(file != null && !file.isEmpty() && file.getSize()>0) {
 		  
 		  //서버 내부의 경로 
-			  String uri = request.getSession().getServletContext().getInitParameter("memberUploadPath");
+		String uri = request.getSession().getServletContext().getInitParameter("memberUploadPath");
 		  
 		  
 		  //시스템의 실제(절대)경로 
@@ -52,27 +51,31 @@ public class MemberRegService {
 		  
 		  //서버의 저장소에 실제 저장 
 		  File saveFile = new File(realPath, newFileName);
-		  try {
+		 
 			file.transferTo(saveFile);
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} 
+		 
 		  
 		  System.out.println("저장완료: "+newFileName);
 		  
 		  //데이터베이스에 저장할 Member 객체의 데이터를 완성한다. : 사진경로 member.setUphoto(newFileName);
 		  
 		  
-		  }else { member.setUphoto("default.png"); }
+		  }else { 
+			  
+			  member.setUphoto("default.png"); 
+		  
+		  }
 		  
 		  result = dao.insertMember(member);
 		  
 		  
 		  System.out.println(result);
 		  
-		  
+	} catch (IllegalStateException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
 		  return result;
 		  
 		  

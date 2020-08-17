@@ -10,7 +10,7 @@ public class Member {
 	private String uid;
 	private String upw;
 	private String uname;
-	private String uphonenumber;
+	private String uphonenum;
 	private String uphoto;
 	private String ucode;
 	private char verify;
@@ -21,21 +21,21 @@ public class Member {
 	public Member() {
 	}
 
-	public Member(int uidx, String uid, String upw, String uname, String uphonenumber, String uphoto, String ucode,
+	public Member(int uidx, String uid, String upw, String uname, String uphonenum, String uphoto, String ucode,
 			Date uregdate) {
 		this.uidx = uidx;
 		this.uid = uid;
 		this.upw = upw;
 		this.uname = uname;
-		this.uphonenumber = uphonenumber;
+		this.uphonenum = uphonenum;
 		this.uphoto = uphoto;
 		this.ucode = ucode;
 		this.uregdate = uregdate;
 	
 	}
 	
-	public Member(String uid, String upw, String uname, String uphonenumber) {
-		this(0, uid, upw, uname, uphonenumber, null, null,null);
+	public Member(String uid, String upw, String uname, String uphonenum) {
+		this(0, uid, upw, uname, uphonenum, null, null,null);
 	}
 	
 	public int getUidx() {
@@ -62,12 +62,15 @@ public class Member {
 	public void setUname(String uname) {
 		this.uname = uname;
 	}
-	public String getUphonenumber() {
-		return uphonenumber;
+	
+	public String getUphonenum() {
+		return uphonenum;
 	}
-	public void setUphonenumber(String uphonenumber) {
-		this.uphonenumber = uphonenumber;
+
+	public void setUphonenum(String uphonenum) {
+		this.uphonenum = uphonenum;
 	}
+
 	public String getUphoto() {
 		return uphoto;
 	}
@@ -112,8 +115,8 @@ public class Member {
 	
 	@Override
 	public String toString() {
-		return "Member [uidx=" + uidx + ", uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", uphonenumber="
-				+ uphonenumber + ", uphoto=" + uphoto + ", ucode=" + ucode + ", verify=" + verify + ", uregdate="
+		return "Member [uidx=" + uidx + ", uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", uphonenum="
+				+ uphonenum + ", uphoto=" + uphoto + ", ucode=" + ucode + ", verify=" + verify + ", uregdate="
 				+ uregdate + "]";
 	}
 	

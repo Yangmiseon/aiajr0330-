@@ -22,7 +22,7 @@ public class BoardListController {
 				HttpServletRequest request,
 				HttpServletResponse response) {
 		
-		model.addAttribute("boardList", listService.getView(request, response));
+		model.addAttribute("listView", listService.getView(request, response));
 		
 		return "board/boardList";
 		

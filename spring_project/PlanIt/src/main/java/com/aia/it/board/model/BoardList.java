@@ -37,13 +37,13 @@ private void calTotalCount() {
 		}else {
 			
 			pageTotalCount = boardTotalCount/boardCountPerpage;
-			System.out.println(boardTotalCount%boardCountPerpage);
+			System.out.println("보드/카운트페이지"+boardTotalCount%boardCountPerpage);
 			
 			if(boardTotalCount%boardCountPerpage > 0) {
 				pageTotalCount ++;
 			}
 			
-			System.out.println(pageTotalCount);
+			System.out.println("pageTotalCount"+pageTotalCount);
 		}
 	}
 	public int getBoardTotalCount() {

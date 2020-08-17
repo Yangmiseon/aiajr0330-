@@ -29,7 +29,7 @@ public class MemberRegController {
 		return "member/memberRegForm";
 	}
 	
-	@RequestMapping( method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST)
 	public String getMemberReg(
 			MemberRegRequest regRequest,
 			HttpServletRequest request,
@@ -53,7 +53,6 @@ public class MemberRegController {
 		//System.out.println(passwordEncoder.encode(regRequest.getUpw()));
 		//System.out.println(passwordEncoder.encode(regRequest.getUpw()).length());
 
-				
 		model.addAttribute("result", regService.memberReg(regRequest, request));
 		
 		return "member/memberReg";

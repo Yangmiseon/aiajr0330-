@@ -35,41 +35,72 @@ public class BoardWriteService {
 		
 		Board board = bRequest.toBoard();
 		
+		System.out.println(board);
+		
 		System.out.println("입력 전 IDX ===> "+board.getBidx());
 		
 		try {
 			
-			MultipartFile file = bRequest.getBphoto1();
+			MultipartFile file1 = bRequest.getBphoto1();
+			MultipartFile file2 = bRequest.getBphoto2();
 
 			System.out.println(bRequest);
 
 			// 사진이 있다면 사진 파일을 물리적으로 저장하고, 없다면 기본 이미지 파일의 경로를 저장한다.
-			if (file != null && !file.isEmpty() && file.getSize() > 0) {
+			if (file1 != null && !file1.isEmpty() && file1.getSize() > 0) {
 
 				// 서버 내부의 경로
-				String uri = request.getSession().getServletContext().getInitParameter("memberUploadPath");
+				String uri = request.getSession().getServletContext().getInitParameter("boardUploadPath");
 
 				// 시스템의 실제(절대) 경로
 				String realPath = request.getSession().getServletContext().getRealPath(uri);
 
 				// 저장할 이미지 파일의 새로운 이름 생성
-				String newFileName = System.nanoTime() + "_" + file.getOriginalFilename();
+				String newFileName = System.nanoTime() + "_" + file1.getOriginalFilename();
 
 				// 서버의 저장소에 실제 저장
 				File saveFile = new File(realPath, newFileName);
-				file.transferTo(saveFile);
+				file1.transferTo(saveFile);
 				System.out.println("저장 완료 : " + newFileName);
 
 				// 데이터베이스에 저장할 Member 객체의 데이터를 완성한다. : 사진 경로
 				board.setBphoto1(newFileName);
-				board.setBphoto2(newFileName);
+				//board.setBphoto2(newFileName);
 
 			} else {
 				board.setBphoto1("defalult.png");
-				board.setBphoto2("defalult.png");
+				//board.setBphoto2("defalult.png");
 
 				
 			}
+			
+			// 사진이 있다면 사진 파일을 물리적으로 저장하고, 없다면 기본 이미지 파일의 경로를 저장한다.
+			if (file2 != null && !file2.isEmpty() && file2.getSize() > 0) {
+
+			// 서버 내부의 경로
+			String uri = request.getSession().getServletContext().getInitParameter("boardUploadPath");
+
+			// 시스템의 실제(절대) 경로
+			String realPath = request.getSession().getServletContext().getRealPath(uri);
+
+			// 저장할 이미지 파일의 새로운 이름 생성
+			String newFileName = System.nanoTime() + "_" + file2.getOriginalFilename();
+
+			// 서버의 저장소에 실제 저장
+			File saveFile = new File(realPath, newFileName);
+			file2.transferTo(saveFile);
+			System.out.println("저장 완료 : " + newFileName);
+
+			// 데이터베이스에 저장할 Member 객체의 데이터를 완성한다. : 사진 경로
+			//board.setBphoto1(newFileName);
+			board.setBphoto2(newFileName);
+
+		} else {
+			//board.setBphoto1("defalult.png");
+			board.setBphoto2("defalult.png");
+
+							
+		}
 
 			result = dao.insertBoard(board);
 
@@ -87,7 +118,7 @@ public class BoardWriteService {
 		}
 			
 			
-		
+	
 		return result;
 				
 				
