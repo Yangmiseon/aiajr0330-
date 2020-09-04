@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/include/sessionCheck.jsp" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,10 +98,29 @@ call( );
     
 <body>
 <form method="post">
-    <p>StartDate : <input type="text" id="datepicker" name="datepicker" onchange="call()" autocomplete="off"></p>
-    <p>EndDate : <input type="text" id="datepicker2" name ="datepicker2" onchange="call()" autocomplete="off"></p>
+	<p>uidx <input type="text" name="uidx" value="${loginInfo.uidx}"></p><br>
+		제목<input type="text" name="ptitle">
+	
+    <p>StartDate : <input type="text" id="datepicker" name="pstartdate" onchange="call()" autocomplete="off"></p>
+    <p>EndDate : <input type="text" id="datepicker2" name ="penddate" onchange="call()" autocomplete="off"></p>
     <div></div>
     <input type="submit" value="완료">
     </form>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -22,13 +22,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertBoard"
 		parameterType="com.aia.it.board.model.Board" useGeneratedKeys="true"
 		keyProperty="bidx">
-		INSERT INTO planit.board(uidx,btitle,bmsg,bphoto1,bphoto2)
-		VALUES(#{uidx},#{btitle},#{bmsg},#{bphoto1},#{bphoto2})
+		INSERT INTO planit.board(uidx,btitle,bmsg,bphoto1,bphoto2,pidx)
+		VALUES(#{uidx},#{btitle},#{bmsg},#{bphoto1},#{bphoto2},#{pidx})
 	</insert>
 
 	<!-- 게시판 리스트 출력 -->
 	<select id="selectTotalList" resultMap="resultBoard">
-		select * from
+		select * froms
 		planit.board order by bidx desc
 	</select>
 
@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 한페이지에 보이게 될 게시글 수 -->
 	<select id="selectList" resultMap="resultBoard">
-		select * from planit.board
+		select * from planit.board 
 		order by bidx desc limit #{param1}, #{param2}
 	</select>
 
@@ -70,6 +70,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="boardDelete" parameterType="com.aia.it.board.model.Board">
       delete from planit.board where bidx=#{bidx}
 	</delete>
+	
+	
+	<select id="selectByPidx"
+		resultType="int">
+		select count(*) from planit.board where pidx=#{pidx}
+	</select>
    
    <!-- 내가쓴 플래너 리스트 -->
  

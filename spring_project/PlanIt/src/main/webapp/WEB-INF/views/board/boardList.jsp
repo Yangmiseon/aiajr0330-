@@ -1,25 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ include file="/WEB-INF/views/include/sessionCheck.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/default.css">
 
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 
    <div>
-      <h1 class="subtitle">회원 리스트</h1>
+      <h1 class="subtitle">전체게시글</h1>
       <c:if test="${not empty listView}">
          ${listView.boardTotalCount}
       <table class="table">
             <tr>
                <th>게시글 번호</th>
-               <th>멤버 번호</th>
+               <th>멤버 번
+
+</th>
                <th>게시글 제목</th>
                <th>게시글 시간</th>
             </tr>
@@ -66,7 +70,10 @@
 
       </c:if>
    </div>
+      <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+   
 </body>
+
 </html>
 
 <script>

@@ -10,6 +10,8 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
+
 	<h1>게시글 수정</h1>
 
 	 <div>
@@ -59,6 +61,8 @@
 			</table>
 		</form>
 	</div>
+	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
+	
 </body>
 </html>
 <script>

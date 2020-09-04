@@ -27,6 +27,6 @@ public class BoardListController {
 		return "board/boardList";
 		
 	}
-	
+
 
 }

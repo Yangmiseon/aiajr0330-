@@ -25,8 +25,16 @@ public class PlannerRegController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String getDailyReg (HttpServletRequest request,
 								Planner planner,
+								int pidx,
 								Model model) {
 		model.addAttribute("result", regService.plannerReg(planner, request));
+		model.addAttribute("pidx", pidx);
+
+		System.out.println("컨트롤러 : " + planner.getPidx());
+		
+
+		
+		
 		return "planner/plannerReg";
 	}
 }

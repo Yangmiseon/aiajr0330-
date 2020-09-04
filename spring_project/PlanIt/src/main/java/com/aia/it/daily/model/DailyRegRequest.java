@@ -1,5 +1,7 @@
 package com.aia.it.daily.model;
 
+import java.util.Date;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class DailyRegRequest {
@@ -10,9 +12,12 @@ public class DailyRegRequest {
 	private String dmsg;
 	private MultipartFile dphoto;
 	private String dtype;
+	private String ddate;
+	private int ddidx;
+	private int pidx;
 	
-	public Daily toMember() {
-		return new Daily(dloc,dloclon,dloclat,dmsg,dtype);
+	public Daily toDaily() {
+		return new Daily(dloc,dloclon,dloclat,dmsg,dtype, ddate, ddidx, pidx);
 	}
 
 	public String getDloc() {
@@ -63,10 +68,39 @@ public class DailyRegRequest {
 		this.dtype = dtype;
 	}
 
+	
+	public int getPidx() {
+		return pidx;
+	}
+
+	public void setPidx(int pidx) {
+		this.pidx = pidx;
+	}
+
+	public String getDdate() {
+		return ddate;
+	}
+
+	public void setDdate(String ddate) {
+		this.ddate = ddate;
+	}
+
+	public int getDdidx() {
+		return ddidx;
+	}
+
+	public void setDdidx(int ddidx) {
+		this.ddidx = ddidx;
+	}
+
 	@Override
 	public String toString() {
 		return "DailyRegRequest [dloc=" + dloc + ", dloclon=" + dloclon + ", dloclat=" + dloclat + ", dmsg=" + dmsg
-				+ ", dphoto=" + dphoto + ", dtype=" + dtype + "]";
+				+ ", dphoto=" + dphoto + ", dtype=" + dtype + ", ddate=" + ddate + ", ddidx=" + ddidx + ", pidx=" + pidx
+				+ "]";
 	}
 
-}
+	
+	
+	
+	}

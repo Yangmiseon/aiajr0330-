@@ -4,4 +4,5 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <script>
 	alert('${msg}');
+	location.href='<c:url value="/board/boardList"/>';
 </script>

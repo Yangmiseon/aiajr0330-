@@ -33,12 +33,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
-	<!-- 회원가입이 되면 id를 검색하며 0,1로 반환해주어 회원 가입처리를 해줌 -->
+	<!-- 회원가입전 아이디가 있는지 체크 -->
 	<select id="selectById"
 		resultType="int">
 		select count(*) from planit.member where uid=#{uid}
 	</select>
 	
+	
+	<select id="selectByUname"
+		resultType="int">
+		select count(*) from planit.member where uname=#{uname}
+	</select>
 	
 	
 	<!-- 가입한 회원의 전체 목록 리스트 -->

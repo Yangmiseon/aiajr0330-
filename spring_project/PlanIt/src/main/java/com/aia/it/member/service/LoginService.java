@@ -21,14 +21,14 @@ public class LoginService {
 	@Autowired
 	private SqlSessionTemplate sessionTemplate;
 
-	public String login(
+	public int login(
 			LoginRequest loginRequest, 
 			HttpSession session, 
 			HttpServletResponse response) {
 		
 		dao=sessionTemplate.getMapper(MemberDaoInterface.class);
 		
-		String loginResult = "";
+		int result=0;
 		
 		//로그인 처리
 		Member member = null;
@@ -55,13 +55,10 @@ public class LoginService {
 			}
 
 			// 로그인 이 필요했던 이전 페이지
-			loginResult = "<script>" + "alert('로그인되었습니다.');" + "location.href='" + loginRequest.getRedirectUri() + "'" + "</script>";
-
-		} else {
-			loginResult = "<script>" + "alert('아이디 또는 비밀번호가 잘못되었습니다.');" + "history.go(-1);" + "</script>";
+			result=1;
 		}
 
-		return loginResult;
+		return result;
 	}
 
 }

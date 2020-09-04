@@ -34,5 +34,24 @@ public class IdCheckService {
 			return result;
 
 	}
+	
+	public String checkName(String uname) {
+		
+		dao=sessionTemplate.getMapper(MemberDaoInterface.class);
+
+			String result = "N";
+
+	
+
+				int resultCnt = dao.selectByUname(uname);
+
+				if (resultCnt < 1) {
+					result = "Y";
+				}
+
+			
+			return result;
+
+	}
 
 }

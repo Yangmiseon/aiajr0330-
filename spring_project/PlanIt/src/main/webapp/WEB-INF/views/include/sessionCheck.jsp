@@ -10,7 +10,7 @@
 </head>
 <body>
 <c:if test="${!empty loginInfo}">
-   ${loginInfo} 로그인 중
+   <h1>${loginInfo} </h1>
 </c:if>
 <c:if test="${empty loginInfo}">
    <script>

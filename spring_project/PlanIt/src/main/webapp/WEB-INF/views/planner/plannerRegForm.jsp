@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/include/sessionCheck.jsp" %>
 
+<%   %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -162,15 +164,105 @@
 	
 </script>
 <body>
-<div id="sortable">
-<c:forEach items="${dateList}" var="list">
-	<div class="please">${list}
-		<div class="itembox"></div>
-		<div class="itembox"></div>
-		<div class="itembox"></div>
-		<div class="itembox"></div>
-	</div>
-</c:forEach>
-</div>
+
+
+						</div>
+	uidx <input type="text" name="uidx" value="${loginInfo.uidx}"><br>
+	<input type="text" name="pstartdate" value="${startdate}">/<input type="text" name="penddate" value="${enddate}"><br>
+	제목<input type="text" name="ptitle" value="${ptitle}">
+		<div id="sortable">
+			<c:forEach items="${dateList}" var="list">
+				<div class="please" name="dailytable">${list}
+				
+				
+					<div class="itembox">
+					<span class="zz">test</span>
+						<div class="content"></div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+		
+	
+	<hr>
+	
+		<form action="dailyList" method="post">
+	
+		uidx <input type="text" name="uidx" value="${loginInfo.uidx}"><br>
+	
+		<input type="submit" value="리스트뽑기">
+		<input type="text" value="${planner.pidx}">
+	
+		</form>
+	
+		<div>
+		
+		
+		               <c:forEach items="${listView.dailyList}" var="daily">
+                  <tr>
+                     <td>${daily.ptitle}</td>
+                   
+                     <td>${daily.dloc}</td>
+                     <td></td>
+                     <td><a href="${daliy.didx}">${daliy.didx}</a></td>
+                     <td></td>
+                     
+                  </tr>
+               </c:forEach>
+		
+		
+		
+		
+		
+		
+		</div>
+	
+	
+	
+	
+	
+	
 </body>
+
+
+
+
 </html>
+
+<script type="text/javascript">
+
+
+console.log($('.itembox').length);
+		
+		
+		
+		
+		
+		
+		$('.zz').click(function () {
+			
+			$('.zz').
+			
+			var z = $(this).next();
+			console.log(z);
+			alert('test');
+			var html='';
+			html+='dloc		<input type="text" name="dloc">	<br>';
+			html+='	dloclon		<input type="text" name="dloclon"><br>';
+			html+='	dloclat		<input type="text" name="dloclat"><br>';
+			html+='dmsg		<input type="text" name="dmsg"><br>';
+			html+='	dphoto		<input type="file" name="dphoto"><br>';
+			
+				z.html(html);
+			
+			
+		});
+		
+	
+
+
+
+
+
+
+</script>

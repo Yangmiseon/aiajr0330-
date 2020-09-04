@@ -41,7 +41,9 @@
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td><input type="text" name="uname"></td>
+			<td><input type="text" name="uname" id="uname">
+			 <span  id="checkmsg1"></span>
+			<input type="checkbox" name="idchk" id="idchk"></td>
 		</tr>
 		<tr>
 			<td>전화번호</td>
@@ -75,6 +77,7 @@
 			
 			
 		});
+
 		
 		$('#uid').focusin(function(){
 			
@@ -112,6 +115,50 @@
 				}
 			});
 			
+		});
+		
+		
+	});
+	
+$(document).ready(function(){
+
+
+		
+		$('#uname').focusin(function(){
+			
+			$(this).val('');
+			$('#idchk').prop('checked', false);
+			
+			$('#checkmsg1').text('');
+			
+			$('#checkmsg1').removeClass('check_not');
+			$('#checkmsg1').removeClass('check_ok');
+		});
+		
+		$('#uname').focusout(function(){
+			
+			if($(this).val().length<1){
+				$('#checkmsg1').text("아이디 항목은 필수 항목입니다.");
+				$('#checkmsg1').addClass('check_not');
+				return false;
+			}
+			
+			// 비동기 통신
+			$.ajax({
+				url : 'unameCheck',
+				data : { uname : $(this).val()},
+				success : function(data){
+					if(data == 'Y'){
+						$('#checkmsg1').text("사용가능한 아이디 입니다.");
+						$('#checkmsg1').addClass('check_ok');
+						$('#idchk').prop('checked', true);
+					} else {
+						$('#checkmsg1').text("사용이 불가능한 아이디 입니다.");
+						$('#checkmsg1').addClass('check_not');
+						$('#idchk').prop('checked', false);
+					}
+				}
+			});
 			
 		});
 		

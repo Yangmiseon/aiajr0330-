@@ -17,8 +17,7 @@
 	<script>
 	
 	alert('회원가입 완료');
-	location.href = '<c:url value="/index.do"/>';
-	/* location.href = '<c:url value="/login/login"/>'; */
+	location.href = '<c:url value="/login/login"/>';
 
 	</script>
 		
@@ -30,7 +29,7 @@
 	<script>
 	
 	alert('회원가입 실패');
-	location.href = '<c:url value="/index.do"/>';
+	location.href = '<c:url value="/login/login"/>';
 
 	</script>
 	

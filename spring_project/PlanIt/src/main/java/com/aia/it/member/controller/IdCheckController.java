@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,5 +25,18 @@ public class IdCheckController {
 		return idCheckService.checkId(uid);	
 		
 	}
+	
+	@RequestMapping("/member/unameCheck")
+	@ResponseBody // 메서드의 반환 데이터를 뷰의 데이터로 사용
+	public String unameCheck(
+			@RequestParam("uname") String uname,
+			Model model
+			) {
+		System.out.println(uname);
+		return idCheckService.checkName(uname);	
+		
+	}
+
+
 
 }

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>LoginForm</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/default.css">
+
 <style>
 </style>
 
@@ -18,7 +20,7 @@
 	<div>
 		<h2 class="subtitle">로그인</h2>
 		<hr>
-		<form method="post" >
+		<form action="<c:url value='/login/login'/>" method="post" >
 			<input type="hidden" name="redirectUri" value="${header.referer}"
 				style="width: 50%;">
 
@@ -55,4 +57,3 @@
 	$(document).ready(function(){
 	});	
 </script>
-

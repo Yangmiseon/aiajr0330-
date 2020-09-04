@@ -1,6 +1,8 @@
 /*
  * package com.aia.it.board.controller;
  * 
+ * import javax.servlet.http.HttpServletRequest; import
+ * javax.servlet.http.HttpServletResponse;
  * 
  * import org.springframework.beans.factory.annotation.Autowired; import
  * org.springframework.stereotype.Controller; import
@@ -14,13 +16,13 @@
  * 
  * @Autowired private BoardPlanListService boardPlanListService;
  * 
- * @RequestMapping("/board/boardWrite") public String getMemberList( Model
- * model,
+ * @RequestMapping("/board/boardWrite") public String getMemberList(
+ * HttpServletRequest request, HttpServletResponse response, Model model,
  * 
  * @RequestParam("uidx") int uidx) {
  * 
  * model.addAttribute("boardPlanListService",
- * boardPlanListService.BoardPlanList(uidx));
+ * boardPlanListService.getBoardPlanList(request, response));
  * 
  * return "board/boardWriteForm"; }
  * 

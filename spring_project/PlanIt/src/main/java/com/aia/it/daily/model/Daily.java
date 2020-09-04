@@ -1,5 +1,7 @@
 package com.aia.it.daily.model;
 
+import java.util.Date;
+
 public class Daily {
 	
 	private int didx;
@@ -9,12 +11,24 @@ public class Daily {
 	private String dmsg;
 	private String dphoto;
 	private String dtype;
+	private String ddate;
+	private int ddidx;
+	private int pidx;
 
-	public Daily(String dloc, String dloclon, String dloclat, String dmsg, String dtype) {
-		this(0,dloc,dloclon,dloclat,dmsg,null,dtype);
+	
+	
+	
+	public Daily() {
+
 	}
 
-	public Daily(int didx, String dloc, String dloclon, String dloclat, String dmsg, String dphoto, String dtype) {
+	public Daily(String dloc, String dloclon, String dloclat, String dmsg, String dtype, String ddate, int ddidx, int pidx) {
+		this(0,dloc,dloclon,dloclat,dmsg,null,dtype, ddate, ddidx ,pidx);
+	}
+
+	public Daily(int didx, String dloc, String dloclon, String dloclat, String dmsg, String dphoto, String dtype,
+			String ddate, int ddidx, int pidx) {
+		super();
 		this.didx = didx;
 		this.dloc = dloc;
 		this.dloclon = dloclon;
@@ -22,6 +36,9 @@ public class Daily {
 		this.dmsg = dmsg;
 		this.dphoto = dphoto;
 		this.dtype = dtype;
+		this.ddate = ddate;
+		this.ddidx = ddidx;
+		this.pidx = pidx;
 	}
 
 	public int getDidx() {
@@ -80,11 +97,38 @@ public class Daily {
 		this.dtype = dtype;
 	}
 
+	public int getPidx() {
+		return pidx;
+	}
+
+	public void setPidx(int pidx) {
+		this.pidx = pidx;
+	}
+	
+	public String getDdate() {
+		return ddate;
+	}
+
+	public void setDdate(String ddate) {
+		this.ddate = ddate;
+	}
+
+	public int getDdidx() {
+		return ddidx;
+	}
+
+	public void setDdidx(int ddidx) {
+		this.ddidx = ddidx;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Daily [didx=" + didx + ", dloc=" + dloc + ", dloclon=" + dloclon + ", dloclat=" + dloclat + ", dmsg="
-				+ dmsg + ", dphoto=" + dphoto + ", dtype=" + dtype + "]";
+				+ dmsg + ", dphoto=" + dphoto + ", dtype=" + dtype + ", ddate=" + ddate + ", ddidx=" + ddidx + ", pidx="
+				+ pidx + "]";
 	}
 
+	
 
 }

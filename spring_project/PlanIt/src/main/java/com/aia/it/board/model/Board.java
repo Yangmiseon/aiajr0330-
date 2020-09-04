@@ -76,9 +76,9 @@ public class Board {
 	}
 	
 	
-	public Board(String btitle, String bmsg, int uidx) 
+	public Board(String btitle, String bmsg, int pidx, int uidx) 
 		{
-		this(0,btitle,bmsg,null,null,null,0,uidx);
+		this(0,btitle,bmsg,null,null,null,pidx,uidx);
 	}
 	
 	

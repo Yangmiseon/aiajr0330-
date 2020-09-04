@@ -24,4 +24,6 @@ public interface MemberDaoInterface {
 	//로그인에 사용 id,pw
 	Member selectByIdPw(String uid, String upw);
 
+	int selectByUname(String uname);
+
 }

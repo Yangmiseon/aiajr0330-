@@ -27,7 +27,7 @@ private DailyDaoInterface dao;
 		
 		int result = 0;
 		System.out.println(regRequest.getDphoto());
-		Daily daily = regRequest.toMember();
+		Daily daily = regRequest.toDaily();
 
 		try {
 
@@ -59,7 +59,12 @@ private DailyDaoInterface dao;
 				daily.setDphoto("defalult.png");
 			}
 
+			System.out.println("데일리1"+daily);
+
+			
 			result = dao.insertDaily(daily);
+			
+			System.out.println("데일리2"+daily);
 
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
